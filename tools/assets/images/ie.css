@@ -1,0 +1,18 @@
+/* DoitCSS 1.0 */
+body{text-align:center;}
+.page,.page760,.page100,.container{text-align:left;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+html>body p code{white-space:normal;}
+hr{margin:-8px auto 10px;}
+img{-ms-interpolation-mode:bicubic;}
+* html .page,* html .page750,* html .page100,* html .container{height:1%;}
+fieldset{padding-top:0;}
+legend{margin-top:0;margin-bottom:10px;margin-left:-10px;background-color:#FFF;font-size:14px;padding:5px;}
+textarea{overflow:auto;}
+label{vertical-align:middle;position:relative;top:-5px;}
+input.text,input.title,textarea{background-color:#fff;border:1px solid #bbb;}
+input.text:focus,input.title:focus{border-color:#666;}
+.page,.page750,.page100,.container{display:inline-block;}
+input.text,input.title,textarea,select,form.inline input.checkbox,form.inline input.radio,form.inline input.button,form.inline button{margin:10px 0;}
+input.checkbox,input.radio,button,input.button{position:relative;top:5px;}

@@ -1,0 +1,1 @@
+<div><img src="<?php echo $this->getAssetUrl('images'); ?>file_topdir.gif"  /><a href="<?php echo $this->createUrl('file/index'); ?>/?path=<?php echo $dir; ?>">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $this->getAssetUrl('images'); ?>tree_folderopen.gif"  /> 当前目录: <?php echo $path; ?></div>
