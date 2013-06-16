@@ -463,8 +463,8 @@ class Template {
         }
 
         //分析判断,循环标签
-        $tag_sel = array_shift(explode(' ', $tag));
-        switch ($tag_sel) {
+        $tagSel = array_shift(explode(' ', $tag));
+        switch ($tagSel) {
 
             case 'if' :
                 return $this->_compileIfTag(substr($tag, 3));
@@ -483,7 +483,7 @@ class Template {
                 break;
 
             default :
-                return $tag_sel;
+                return $tagSel;
         }
     }
 
