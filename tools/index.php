@@ -20,7 +20,7 @@ define('APP_ROOT', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 /**
  * 加载DoitPHP框架的初始化文件,如果必要可以修改文件路径
  */
-require_once APP_ROOT . '../doitphp/doit.class.php';
+require_once APP_ROOT . '../doitphp/DoitPHP.php';
 
 $config = APP_ROOT . 'application/config/application.php';
 
