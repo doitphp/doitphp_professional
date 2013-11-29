@@ -1,0 +1,7 @@
+User-agent: *
+Crawl-delay: 10
+Disallow: /doitphp/
+Disallow: /application/
+Disallow: /assets/
+Disallow: /cache/
+Disallow: /logs/

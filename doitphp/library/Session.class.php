@@ -55,6 +55,7 @@ class Session {
 
         //设置项目系统session的存放目录
         $configPath  = Configure::get('session.path');
+        $configPath  = (!$configPath) ? $configPath : rtrim($configPath, '/');
         $sessionPath = (!$configPath) ? CACHE_PATH . 'temp' : $configPath;
         if (is_dir($sessionPath) && is_writable($sessionPath)) {
             session_save_path($sessionPath);

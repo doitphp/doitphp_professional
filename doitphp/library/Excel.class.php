@@ -175,7 +175,7 @@ class Excel {
     protected function _handleCell($data) {
 
         //参数分析
-        if (empty($data) || is_array($data)) {
+        if (is_array($data)) {
             return false;
         }
 
@@ -197,7 +197,7 @@ class Excel {
     protected function _handleIndexCell($data, $key) {
 
         //参数分析
-        if (empty($data) || is_array($data)) {
+        if (is_array($data)) {
             return false;
         }
 

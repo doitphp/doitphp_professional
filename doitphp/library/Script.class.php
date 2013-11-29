@@ -38,19 +38,19 @@ class Script {
 
         switch ($scriptName) {
             case 'jquery':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "jquery/jquery.min.js?version=1.7.1\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.min.js?version=1.7.1\"></script>\r";
                 break;
             case 'form':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "jquery/jquery.form.min.js?version=2.8.3\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.form.min.js?version=2.8.3\"></script>\r";
                 break;
             case 'calendar':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "calendar/WdatePicker.js?version=4.7.2\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/calendar/WdatePicker.js?version=4.7.2\"></script>\r";
                 break;
             case 'checkbox':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "jquery/jquery.checkbox.min.js?version=1.1\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.checkbox.min.js?version=1.1\"></script>\r";
                 break;
             case 'lazyload':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "jquery/jquery.lazyload.min.js?version=20110810\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.lazyload.min.js?version=20110810\"></script>\r";
                 break;
             default:
                 $html = "<script type=\"text/javascript\" src=\"" . $scriptName . ".js\"></script>\r";
@@ -205,7 +205,7 @@ class Script {
         //选择 ajax loading 类型图片
         $imageName = self::_parseAjaxImage($options);
 
-        return '<img src="' . Controller::getAssetUrl('doit/images') . $imageName . '"/>';
+        return '<img src="' . Controller::getAssetUrl('doit/images') . '/' . $imageName . '"/>';
     }
 
     /**
@@ -232,7 +232,7 @@ class Script {
         $imageName   = self::_parseAjaxImage($imageOption);
 
         //组装JS代码
-        return "<script type=\"text/javascript\">\$(document).ready(function() {\$('" . $tag . "').append('<img src=\"" . $baseDirUrl . $imageName . "\" id=\"" . $loadingImgId . "\"/>');var left=parseInt((\$('" . $tag . "').width()-\$('#" . $loadingImgId . "').width())/2);var top=parseInt((\$('" . $tag . "').height()-\$('#" . $loadingImgId . "').height())/2);\$('#" . $loadingImgId . "').css({'margin-top':top+'px','margin-left':left+'px'});\$('" . $tag."').load('" . $url . "',function() {\$('#" . $loadingImgId . "').remove()})});</script>\r";
+        return "<script type=\"text/javascript\">\$(document).ready(function() {\$('" . $tag . "').append('<img src=\"" . $baseDirUrl . '/' . $imageName . "\" id=\"" . $loadingImgId . "\"/>');var left=parseInt((\$('" . $tag . "').width()-\$('#" . $loadingImgId . "').width())/2);var top=parseInt((\$('" . $tag . "').height()-\$('#" . $loadingImgId . "').height())/2);\$('#" . $loadingImgId . "').css({'margin-top':top+'px','margin-left':left+'px'});\$('" . $tag."').load('" . $url . "',function() {\$('#" . $loadingImgId . "').remove()})});</script>\r";
     }
 
     /**
@@ -250,7 +250,7 @@ class Script {
         //选择AJAX加载类型图片
         $imageName = self::_parseAjaxImage($options);
 
-        return "<script type=\"text/javascript\">\$(document).ready(function(){\$('" . $tag . "').lazyload({placeholder:'" . Controller::getBaseUrl() . 'assets/doit/images/' . $imageName . "',effect:'fadeIn'});});</script>\r";
+        return "<script type=\"text/javascript\">\$(document).ready(function(){\$('" . $tag . "').lazyload({placeholder:'" . Controller::getAssetUrl('doit/images') . '/' . $imageName . "',effect:'fadeIn'});});</script>\r";
     }
 
     /**

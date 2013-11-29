@@ -126,7 +126,7 @@ abstract class Log {
         }
 
         //组装日志文件路径
-        $logFilePath = Configure::get('application.logPath');
+        $logFilePath = rtrim(Configure::get('application.logPath'), '/') . DIRECTORY_SEPARATOR;
         if (!$logFileName) {
             $logFilePath .= date('Y-m') . '/' . date('Y-m-d');
         } else {

@@ -223,13 +223,13 @@ abstract class Configure {
         $defaultConfig = array();
 
         //设置应用目录(application)的路径
-        $defaultConfig['basePath']            = APP_ROOT . 'application' . DIRECTORY_SEPARATOR;
+        $defaultConfig['basePath']            = APP_ROOT . 'application';
 
         //设置缓存目录的路径
-        $defaultConfig['cachePath']           = APP_ROOT . 'cache' . DIRECTORY_SEPARATOR;
+        $defaultConfig['cachePath']           = APP_ROOT . 'cache';
 
         //设置日志目录的路径
-        $defaultConfig['logPath']             = APP_ROOT . 'logs' . DIRECTORY_SEPARATOR;
+        $defaultConfig['logPath']             = APP_ROOT . 'logs';
 
         //设置是否开启调试模式（开启后,程序运行出现错误时,显示错误信息,便于程序调试）
         $defaultConfig['debug']               = false;
@@ -240,7 +240,7 @@ abstract class Configure {
         //设置应路由网址的重写模式是否开启
         $defaultConfig['rewrite']             = false;
 
-        //设置路网址格式(path：为url路由格式；get:为标准普通url格式)
+        //设置路由网址格式(path：为url路由格式；get:为标准普通url格式)
         $defaultConfig['urlFormat']           = self::PATH_FORMAT;
 
         //设置路由分割符

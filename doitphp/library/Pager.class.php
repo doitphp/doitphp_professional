@@ -509,7 +509,7 @@ class Pager {
             $this->setMode($styleName);
         }
 
-        $cssFile = Controller::getBaseUrl() . 'assets/doit/images/' . $this->_styleFile;
+        $cssFile = Controller::getBaseUrl() . '/assets/doit/images/' . $this->_styleFile;
 
         return "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $cssFile . "\"/>\r";
     }
@@ -541,7 +541,7 @@ class Pager {
                 $_styleFile = 'doitphp_pagelist_default.min.css';
         }
 
-        $cssFile = Controller::getBaseUrl() . 'assets/doit/images/' . $_styleFile;
+        $cssFile = Controller::getBaseUrl() . '/assets/doit/images/' . $_styleFile;
 
         return "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $cssFile . "\"/>\r";
     }
@@ -568,7 +568,7 @@ class Pager {
             case 'simple':
                 $this->_styleFile = 'doitphp_pagelist_simple.min.css';
 
-                $cssDir = Controller::getBaseUrl() . 'assets/doit/';
+                $cssDir = Controller::getBaseUrl() . '/assets/doit/';
                 $this->firstPage  = '<img src="' . $cssDir . 'images/pre_02.gif" width="17" height="11" />';
                 $this->prePage    = '<img src="' . $cssDir . 'images/s_pre.gif" width="16" height="11" />';
                 $this->nextPage   = '<img src="' . $cssDir . 'images/s_next.gif" width="14" height="11" />';
