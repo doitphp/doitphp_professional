@@ -333,11 +333,11 @@ abstract class Controller {
         }
 
         //获取assets根目录的url
-        $assetUrl = self::getBaseUrl() . 'assets/';
+        $assetUrl = self::getBaseUrl() . '/assets';
 
         //分析assets目录下的子目录
         if (!is_null($dirName)) {
-            $assetUrl .= $dirName . '/';
+            $assetUrl .= '/' . $dirName;
         }
 
         return $assetUrl;

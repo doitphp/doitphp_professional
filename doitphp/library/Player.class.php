@@ -42,10 +42,10 @@ class Player {
 
         return <<<EOT
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="{$width}" height="{$height}">
-<param name="movie" value="{$baseDirUrl}mp3.swf?soundFile={$fileUrl}&autostart={$autoPlay}&loop=yes" />
+<param name="movie" value="{$baseDirUrl}/mp3.swf?soundFile={$fileUrl}&autostart={$autoPlay}&loop=yes" />
 <param name="quality" value="high" />
 <param value="transparent" name="wmode" />
-<embed src="{$baseDirUrl}mp3player.swf?soundFile={$fileUrl}&autostart={$autoPlay}&loop=yes" width="{$width}" height="{$height}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash">
+<embed src="{$baseDirUrl}/mp3player.swf?soundFile={$fileUrl}&autostart={$autoPlay}&loop=yes" width="{$width}" height="{$height}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash">
 </embed>
 </object>
 EOT;
@@ -72,7 +72,7 @@ EOT;
 
         return <<<EOT
 <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{$width}" height="{$height}">
-<param name="movie" value="{$baseDirUrl}vcastr3.swf?vcastr_file={$fileUrl}&IsContinue=0&BarColor=0x000000&BarTransparent=50&GlowColor=0xffffff&IconColor=0xffffff"><param name="quality" value="high"><param name="allowFullScreen" value="true" /><param   name="wmode"   value="opaque" /><embed src="{$baseDirUrl}vcastr3.swf?vcastr_file={$fileUrl}&IsContinue=0&BarColor=0x000000&BarTransparent=50&GlowColor=0xffffff&IconColor=0xffffff" allowFullScreen="true" quality="high" wmode="opaque"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="{$width}" height="{$height}"></embed></object>
+<param name="movie" value="{$baseDirUrl}/vcastr3.swf?vcastr_file={$fileUrl}&IsContinue=0&BarColor=0x000000&BarTransparent=50&GlowColor=0xffffff&IconColor=0xffffff"><param name="quality" value="high"><param name="allowFullScreen" value="true" /><param   name="wmode"   value="opaque" /><embed src="{$baseDirUrl}/vcastr3.swf?vcastr_file={$fileUrl}&IsContinue=0&BarColor=0x000000&BarTransparent=50&GlowColor=0xffffff&IconColor=0xffffff" allowFullScreen="true" quality="high" wmode="opaque"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="{$width}" height="{$height}"></embed></object>
 EOT;
     }
 
@@ -113,7 +113,7 @@ EOT;
         $width  = (!$width) ? 280 : $width;
         $height = (!$height) ? 192 : $height;
         return <<<EOT
-<script type='text/javascript'>linkarr = new Array();picarr = new Array();textarr = new Array();var swf_width={$width};var swf_height={$height};var files = "";var links = "";var texts = "";{$contentStr}for(i=1;i<picarr.length;i++){if(files=="") files = picarr[i];else files += "|"+picarr[i];}for(i=1;i<linkarr.length;i++){if(links=="")links = linkarr[i];else links += "|"+linkarr[i];}for(i=1;i<textarr.length;i++){if(texts=="")texts = textarr[i];else texts += "|"+textarr[i];}document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" width="'+ swf_width +'" height="'+ swf_height +'">');document.write('<param name="movie" value="{$baseDirUrl}focus.swf"><param name="quality" value="high">');document.write('<param name="menu" value="false"><param name=wmode value="transparent">');document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');document.write('<embed src="{$baseDirUrl}focus.swf" wmode="transparent" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');document.write('</object>');</script>
+<script type='text/javascript'>linkarr = new Array();picarr = new Array();textarr = new Array();var swf_width={$width};var swf_height={$height};var files = "";var links = "";var texts = "";{$contentStr}for(i=1;i<picarr.length;i++){if(files=="") files = picarr[i];else files += "|"+picarr[i];}for(i=1;i<linkarr.length;i++){if(links=="")links = linkarr[i];else links += "|"+linkarr[i];}for(i=1;i<textarr.length;i++){if(texts=="")texts = textarr[i];else texts += "|"+textarr[i];}document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,24,0" width="'+ swf_width +'" height="'+ swf_height +'">');document.write('<param name="movie" value="{$baseDirUrl}/focus.swf"><param name="quality" value="high">');document.write('<param name="menu" value="false"><param name=wmode value="transparent">');document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'">');document.write('<embed src="{$baseDirUrl}/focus.swf" wmode="transparent" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'& menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');document.write('</object>');</script>
 EOT;
     }
 

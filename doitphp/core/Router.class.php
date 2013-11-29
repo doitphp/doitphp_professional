@@ -281,7 +281,7 @@ abstract class Router {
         }
 
         //获取项目访问的基本网址
-        $url = self::getBaseUrl();
+        $url = self::getBaseUrl() . '/';
 
         //统一路由网址分割符的操作
         $route = str_replace(array('//', '/', '.'), URL_SEGEMENTATION, $route);
@@ -341,7 +341,7 @@ abstract class Router {
         //处理URL中的//或\\情况,即:出现/或\重复的现象
         $url = str_replace(array('\\', '//'), '/', dirname($_SERVER['SCRIPT_NAME']));
 
-        return rtrim($url, '/') . '/';
+        return rtrim($url, '/');
     }
 
 }

@@ -222,7 +222,7 @@ class DbCommand {
         if ($isWhere) {
             $this->_parts['where'] = (isset($this->_parts['where']) && $this->_parts['where']) ? "{$this->_parts['where']} AND {$where}" : "WHERE {$where}";
         } else {
-            $this->_parts['orwhere'] = (isset($this->_parts['orwhere']) && $this->_parts['orwhere']) ? "{$this->_parts['orwhere']} AND {$where}" : "OR {$where}";
+            $this->_parts['orwhere'] = (isset($this->_parts['orwhere']) && $this->_parts['orwhere']) ? "{$this->_parts['orwhere']} OR {$where}" : "OR {$where}";
         }
 
         return $this;
@@ -380,7 +380,7 @@ class DbCommand {
         if ($isHaving) {
             $this->_parts['having'] = (isset($this->_parts['having']) && $this->_parts['having']) ? "{$this->_parts['having']} AND {$where}" : "HAVING {$where}";
         } else {
-            $this->_parts['orhaving'] = (isset($this->_parts['orhaving']) && $this->_parts['orhaving']) ? "{$this->_parts['orhaving']} AND {$where}" : "HAVING {$where}";
+            $this->_parts['orhaving'] = (isset($this->_parts['orhaving']) && $this->_parts['orhaving']) ? "{$this->_parts['orhaving']} OR {$where}" : "HAVING {$where}";
         }
 
         return $this;

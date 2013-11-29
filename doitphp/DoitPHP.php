@@ -235,12 +235,12 @@ abstract class Doit {
 
         //定义项目应用目录(application)的基本路径
         if (!defined('BASE_PATH')) {
-            define('BASE_PATH', Configure::get('application.basePath'));
+            define('BASE_PATH', rtrim(Configure::get('application.basePath'), '/') . DIRECTORY_SEPARATOR);
         }
 
         //定义项目缓存目录(cache)的基本路径
         if (!defined('CACHE_PATH')) {
-            define('CACHE_PATH', Configure::get('application.cachePath'));
+            define('CACHE_PATH', rtrim(Configure::get('application.cachePath'), '/') . DIRECTORY_SEPARATOR);
         }
 
         //定义项目入口文件的名称

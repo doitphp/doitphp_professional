@@ -282,7 +282,7 @@ class Form {
 
         //分析JS文件存放目录
         $baseDirUrl = Controller::getAssetUrl('doit/js');
-        $string     = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "jquery/jquery.passwordStrength.min.js?version=1.0\"></script>";
+        $string     = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.passwordStrength.min.js?version=1.0\"></script>";
         $string    .= "<script type=\"text/javascript\">$(document).ready(function(){\$('{$objTab}').passwordStrength();});</script>";
 
         return $string;

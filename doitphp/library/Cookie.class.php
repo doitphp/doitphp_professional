@@ -75,6 +75,7 @@ class Cookie {
         }
         if (is_null($path)) {
             $configPath = Configure::get('cookie.path');
+            $configPath = (!$configPath) ? $configPath : rtrim($configPath, '/') . '/';
             $path       = (!$configPath) ? self::$_defaultConfig['path'] : $configPath;
         }
         if (is_null($domain)) {

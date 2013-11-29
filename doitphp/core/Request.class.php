@@ -215,11 +215,21 @@ abstract class Request {
      *
      * @access public
      *
+     * @param string $default 默认IP
+     *
      * @return string
      */
-    public static function clientIp() {
+    public static function clientIp($default = '0.0.0.0') {
 
-        return htmlspecialchars($_SERVER['REMOTE_ADDR']);
+        $keys = array('HTTP_X_FORWARDED_FOR', 'HTTP_CLIENT_IP', 'REMOTE_ADDR');
+        foreach ($keys as $key) {
+            if (!isset($_SERVER[$key]) || !$_SERVER[$key]) {
+                continue;
+            }
+            return htmlspecialchars($_SERVER[$key]);
+        }
+
+        return $default;
     }
 
     /**
@@ -375,5 +385,35 @@ abstract class Request {
         }
 
         return isset($_ENV[$key]) ? $_ENV[$key] : $default;
+    }
+
+    /**
+     * 判断是否为ajax调用
+     *
+     * @access public
+     * @return boolean
+     */
+    public static function isAjax() {
+        return (self::server('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest') ? true : false;
+    }
+
+    /**
+     * 判断是否为POST调用
+     *
+     * @access public
+     * @return boolean
+     */
+    public static function isPost() {
+        return (self::server('REQUEST_METHOD') == 'POST') ? true : false;
+    }
+
+    /**
+     * 判断是否为GET调用
+     *
+     * @access public
+     * @return boolean
+     */
+    public static function isGet() {
+        return (self::server('REQUEST_METHOD') == 'GET') ? true : false;
     }
 }
