@@ -1061,7 +1061,7 @@ class Model {
             }
         }
 
-        $limitString = "LIMIT" . (($listNum) ? "{$startId},{$listNum}" : $startId);
+        $limitString = "LIMIT " . (($listNum) ? "{$startId},{$listNum}" : $startId);
 
         return $limitString;
     }
