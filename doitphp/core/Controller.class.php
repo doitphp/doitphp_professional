@@ -699,7 +699,11 @@ abstract class Controller {
             return stripslashes($data);
         }
 
-        return array_map(array($this, '_stripSlashes'), $data);
+        foreach($data as &$_val){
+            $_val = stripcslashes($_val);
+        }
+
+        return $data;
     }
 
     /**
