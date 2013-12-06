@@ -15,6 +15,8 @@ if (!defined('IN_DOIT')) {
     exit();
 }
 
+define('CONFIG_DIR', APP_ROOT . 'application/config/');
+
 abstract class Configure {
 
     /*
