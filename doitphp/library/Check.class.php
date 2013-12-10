@@ -171,10 +171,10 @@ class Check {
 
         //参数分析
         if (is_null($string)) {
-            return false;
+            return true;
         }
 
-        return is_null($string) ? false : true;
+        return is_null($string) ? true : false;
     }
 
     /**
