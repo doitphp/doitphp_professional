@@ -41,16 +41,3 @@ DoitPHP(原Tommyframework)是一个基于BSD开源协议发布的轻量级PHP框
 五、提供了PHP程序开发中常用的操作类库，无论是COOKIE、SESSION的操作，还是实现网页页面的分页效果，实现音频、视频、图片幻灯片的播放，生成RAR、EXCEL、PDF等文件类型的文件，实现MEMCACH、XCACHE、APC等常见的缓存操作，实现WEB SERVICE等PHP的高级应用。利用扩展类库进行操作，如同“信手拈来”。
 
 六、丰富的数据库驱动，支持MYSQL、POSTGRESQL、ORACLE、SQLITE、MSSQL、MONGODB、REDIS等数据库。
-
-changelog
-1、Controller基类的_stripSlashes方法array_map被替换为foreach已适应低版本PHP
-2、Controller基类增加getAction方法
-3、Controller基类增加isPost、getClientUa方法
-4、Controller基类的showMsg方法默认跳转路径为后退，默认等待时间为3秒
-5、Controller基类的_stripSlashes方法修复了POST为二维数组时出错的BUG
-6、doitphp.php、configure增加默认配置文件路径修改
-7、Model基类的query方法追加fetchAll
-8、Model基类的setErrorInfo方法参数为数组时转义出错
-9、修改check类的ismust方法
-10、修改check类的isLength方法，统计长度方式改为全角字符算两个字符，半角算1个字符
-11、Pager类output方法中$data参数为空时的错误
