@@ -40,4 +40,8 @@ DoitPHP(原Tommyframework)是一个基于BSD开源协议发布的轻量级PHP框
 
 五、提供了PHP程序开发中常用的操作类库，无论是COOKIE、SESSION的操作，还是实现网页页面的分页效果，实现音频、视频、图片幻灯片的播放，生成RAR、EXCEL、PDF等文件类型的文件，实现MEMCACH、XCACHE、APC等常见的缓存操作，实现WEB SERVICE等PHP的高级应用。利用扩展类库进行操作，如同“信手拈来”。
 
+<<<<<<< HEAD:readme.md
 六、丰富的数据库驱动，支持MYSQL、POSTGRESQL、ORACLE、SQLITE、MSSQL、MONGODB、REDIS等数据库。
+=======
+六、丰富的数据库驱动，支持MYSQL、POSTGRESQL、ORACLE、SQLITE、MSSQL、MONGODB、REDIS等数据库。
+>>>>>>> origin/master:readme
