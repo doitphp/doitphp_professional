@@ -283,6 +283,11 @@ abstract class Doit {
             define('DEFAULT_ACTION', Configure::get('application.defaultAction'));
         }
 
+        //定义默认配置文件路径
+        if (!defined('CONFIG_DIR')) {
+            define('CONFIG_DIR', rtrim(Configure::get('application.defaultConfigDir'), '/') . DIRECTORY_SEPARATOR);
+        }
+
         return true;
     }
 

@@ -263,6 +263,9 @@ abstract class Configure {
         //设置视图文件的格式(php或html, 默认为php)
         $defaultConfig['viewExt']             = self::PHP_VIEW_EXT;
 
+        //设置默认配置文件路径
+        $defaultConfig['defaultConfigDir'] = APP_ROOT . 'application' . DIRECTORY_SEPARATOR . 'config';
+
         return $defaultConfig;
     }
 }

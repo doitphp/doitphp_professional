@@ -338,6 +338,11 @@ class Pager {
         //获取分页数组
         $data = $this->_processData();
 
+        //数组为空时
+        if (empty($data)) {
+            return false;
+        }
+
         //获取HTML内容
         $html = '<div class="doitphp_pagelist_box"><ul>';
 

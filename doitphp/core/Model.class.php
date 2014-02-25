@@ -564,7 +564,7 @@ class Model {
         //转义数据表前缀
         $sql = str_replace('#__', $this->_prefix, $sql);
 
-        return $this->_slave()->query($sql, $params);
+        return $this->_slave()->query($sql, $params)->fetchAll();
     }
 
     /**
@@ -1499,7 +1499,16 @@ class Model {
          }
 
          //对信息进行转义
-         $this->_errorInfo = trim($message);
+         if (!is_array($message)) {
+            $message = trim($message);
+         }
+         else {
+            foreach($message as &$val) {
+                $val = trim($val);
+            }
+         }
+
+         $this->_errorInfo = $message;
 
          return true;
     }

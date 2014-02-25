@@ -178,7 +178,7 @@ abstract class Controller {
      *
      * @return string
      */
-    public static function showMsg($message, $gotoUrl = null, $limitTime = 5) {
+    public static function showMsg($message, $gotoUrl = -1, $limitTime = 3) {
 
         return Response::showMsg($message, $gotoUrl, $limitTime);
     }
@@ -363,6 +363,18 @@ abstract class Controller {
     public static function getClientIp() {
 
         return Request::clientIp();
+    }
+
+
+     /**
+     * 获取客户端UA
+     *
+     * @access public
+     * @return string
+     */
+    public static function getClientUa() {
+
+        return $_SERVER['HTTP_USER_AGENT'];
     }
 
     /**
@@ -679,6 +691,18 @@ abstract class Controller {
         return true;
     }
 
+
+    /**
+     * 获取当前运行的action
+     *
+     * @access public
+     * @return string
+     */
+    public function getActionName() {
+
+        return Doit::getActionName();
+    }
+
     /**
      * stripslashes()的同功能操作
      *
@@ -699,7 +723,17 @@ abstract class Controller {
             return stripslashes($data);
         }
 
-        return array_map(array($this, '_stripSlashes'), $data);
+        foreach($data as &$_val){
+            if ( is_array($_val) ) {
+                foreach($_val as &$__val) {
+                    $__val = stripcslashes($__val);
+                }
+            }
+            else
+                $_val = stripcslashes($_val);
+        }
+
+        return $data;
     }
 
     /**
@@ -793,6 +827,9 @@ abstract class Controller {
 
             case 'files':
                 return call_user_func_array(array('Request', 'files'), $args);
+
+            case 'isPost':
+                return Request::isPost();
 
             default:
                 $this->halt('The method: ' . $method . '() is not found in ' . get_class($this) . ' class!', 'Normal');

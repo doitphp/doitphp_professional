@@ -169,12 +169,15 @@ class Check {
      */
     public static function isMust($string = null) {
 
-        //参数分析
-        if (is_null($string)) {
-            return false;
-        }
+        $flag = false;
+        
+        if (is_null($string))
+            $flag = true;
 
-        return is_null($string) ? false : true;
+        if(empty($string) && $string != '0')
+            $flag = true;
+
+        return $flag;
     }
 
     /**
@@ -192,7 +195,7 @@ class Check {
             return false;
         }
         //获取字符串长度
-        $length = strlen(trim($string));
+        $length = (strlen($string) + mb_strlen($string, 'UTF8')) / 2;
 
         return (($length >= (int)$min) && ($length <= (int)$max)) ? true : false;
     }
