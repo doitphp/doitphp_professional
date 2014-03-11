@@ -44,6 +44,11 @@ if (!defined('IN_DOIT')) {
 //$config['application']['log'] = true;
 
 /**
+ * 自定义路由设置. true:开启; false:关闭. 默认关闭
+ */
+//$config['application']['customUrlRouter'] = true;
+
+/**
  * 自定义项目(application)目录路径的设置。注：结尾无需"/"，建议用绝对路径。
  */
 //$config['application']['basePath'] = APP_ROOT . 'application';
