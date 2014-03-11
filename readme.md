@@ -7,6 +7,8 @@ DoitPHP适合各种规模的Web应用，对于中小型项目，它提供了丰�
 目前我所在的公司一个规模在小型和中等之间的项目即由DoitPHP承载。
 
 [Changelog]
+2014-03-11
+- 配置文件增加路由选项注释
 
 2014-02-25
 - Controller基类增加getActionName方法，在init方法里通过判断action可以实现简单的拦截器功能
