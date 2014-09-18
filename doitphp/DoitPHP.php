@@ -23,17 +23,24 @@ if (!defined('IN_DOIT')) {
 error_reporting(E_ALL^E_NOTICE);
 
 /**
+ * 定义目录分隔符
+ */
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+
+/**
  * 定义DoitPHP项目的基本路径
  */
 if (!defined('APP_ROOT')) {
-    define('APP_ROOT', dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR);
+    define('APP_ROOT', dirname(__FILE__) . DS . '..');
 }
 
 /**
  * 定义DoitPHP框架文件所在路径
  */
 if (!defined('DOIT_ROOT')) {
-    define('DOIT_ROOT', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+    define('DOIT_ROOT', dirname(__FILE__));
 }
 
 /**
@@ -160,7 +167,7 @@ abstract class Doit {
             $controller = self::$_controller . 'Controller';
             $action     = self::$_action . 'Action';
 
-            $controllerHomePath = BASE_PATH . ((self::$_module) ? 'modules' . DIRECTORY_SEPARATOR . self::$_module . DIRECTORY_SEPARATOR : '') . 'controllers' . DIRECTORY_SEPARATOR;
+            $controllerHomePath = BASE_PATH . DS . ((self::$_module) ? 'modules' . DS . self::$_module . DS : '') . 'controllers' . DS;
             //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
             if (strpos($controller, '_') === false) {
                 $controllerFilePath = $controllerHomePath . self::$_controller . '.php';
@@ -174,10 +181,10 @@ abstract class Doit {
                 //当$controller中含有'_'字符时,将'_'替换为路径分割符。如："/" 或 "\"
                 $childDirArray      = explode('_', strtolower(self::$_controller));
                 $controllerFileName = ucfirst(array_pop($childDirArray));
-                $childDirName       = implode(DIRECTORY_SEPARATOR, $childDirArray);
+                $childDirName       = implode(DS, $childDirArray);
                 unset($childDirArray);
                 //重新组装Controller文件的路径
-                $controllerFilePath = $controllerHomePath . $childDirName . DIRECTORY_SEPARATOR . $controllerFileName . '.php';
+                $controllerFilePath = $controllerHomePath . $childDirName . DS . $controllerFileName . '.php';
                 if (!is_file($controllerFilePath)) {
                     //当文件在子目录里没有找到时
                     self::_show404Error();
@@ -214,11 +221,11 @@ abstract class Doit {
     private static function _init($filePath = null) {
 
         //加载对配置文件管理的类文件
-        self::loadFile(DOIT_ROOT . 'core/Configure.class.php');
+        self::loadFile(DOIT_ROOT . DS . 'core/Configure.php');
         //加载路由网址分析的类文件
-        self::loadFile(DOIT_ROOT . 'core/Router.class.php');
+        self::loadFile(DOIT_ROOT . DS . 'core/Router.php');
         //加载Controller基类
-        self::loadFile(DOIT_ROOT . 'core/Controller.class.php');
+        self::loadFile(DOIT_ROOT . DS . 'core/Controller.php');
 
         //加载并分析项目的主配置文件
         Configure::loadConfig($filePath);
@@ -235,12 +242,12 @@ abstract class Doit {
 
         //定义项目应用目录(application)的基本路径
         if (!defined('BASE_PATH')) {
-            define('BASE_PATH', rtrim(Configure::get('application.basePath'), '/') . DIRECTORY_SEPARATOR);
+            define('BASE_PATH', rtrim(Configure::get('application.basePath'), '/'));
         }
 
         //定义项目缓存目录(cache)的基本路径
         if (!defined('CACHE_PATH')) {
-            define('CACHE_PATH', rtrim(Configure::get('application.cachePath'), '/') . DIRECTORY_SEPARATOR);
+            define('CACHE_PATH', rtrim(Configure::get('application.cachePath'), '/'));
         }
 
         //定义项目入口文件的名称
@@ -296,9 +303,9 @@ abstract class Doit {
      */
     private static function _show404Error() {
 
-        $viewFilePath = BASE_PATH . 'views/error/error404.html';
+        $viewFilePath = BASE_PATH . DS . 'views/error/error404.html';
         //判断自定义404页面文件是否存在,若不存在则加载默认404页面
-        is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . 'views/html/error404.html');
+        is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . DS . 'views/html/error404.html');
 
         //既然提示404错误信息,程序继续执行下去也毫无意义,所以要终止(exit).
         exit();
@@ -410,7 +417,7 @@ abstract class Doit {
 /**
  * 自动加载引导文件的加载
  */
-Doit::loadFile(DOIT_ROOT . 'core/AutoLoad.class.php');
+Doit::loadFile(DOIT_ROOT . DS . 'core/AutoLoad.php');
 
 /**
  * 调用SPL扩展,注册__autoload()函数.

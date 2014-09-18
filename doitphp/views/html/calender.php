@@ -1,16 +1,10 @@
 <!-- calendar begin -->
-<table border="0" cellpadding="0" cellspacing="1" style="width:100%;border:1px solid #9EC9FE;font-size:12px;line-height:20px;color:#222;height:auto;">
+<table style="width:100%;border:1px solid #9EC9FE;font-size:12px;line-height:20px;color:#222;height:auto;">
 	<tr align="center">
-	<td colspan="7"><?php echo $data['year']; ?> 年  <?php echo $data['month']; ?> 月</td>
+		<td colspan="7"><?php echo $data['year']; ?> 年  <?php echo $data['month']; ?> 月</td>
 	</tr>
 	<tr align="center" style="background-color:#9EC9FE;color:#FFF;">
-		<td>日</td>
-		<td>一</td>
-		<td>二</td>
-		<td>三</td>
-		<td>四</td>
-		<td>五</td>
-		<td>六</td>
+		<td>日</td><td>一</td><td>二</td><td>三</td><td>四</td><td>五</td><td>六</td>
 	</tr>
 <?php foreach ($data['content'] as $lines) {?>
 	<tr align="center">
