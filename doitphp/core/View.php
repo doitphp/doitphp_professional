@@ -80,7 +80,7 @@ class View {
         }
 
         //设置当前视图的默认目录路径
-        $this->_viewPath = BASE_PATH . DS . $viewDirName . DS;
+        $this->_viewPath = BASE_PATH . DS . $viewDirName;
 
         return true;
     }
@@ -199,7 +199,7 @@ class View {
 
         //分析,加载,显示layout视图内容
         if ($this->_layout) {
-            $layoutFile = $this->_viewPath . 'layout' . DS . $this->_layout . VIEW_EXT;
+            $layoutFile = $this->_viewPath . DS . 'layout' . DS . $this->_layout . VIEW_EXT;
             if (is_file($layoutFile)) {
                 ob_start();
                 include $layoutFile;
@@ -280,7 +280,7 @@ class View {
             $viewFileName = (strpos($fileName, '/') === false) ? Doit::getControllerName() . DS . $fileName : $fileName;
         }
 
-        $viewPath = $this->_viewPath . $viewFileName . VIEW_EXT;
+        $viewPath = $this->_viewPath . DS . $viewFileName . VIEW_EXT;
 
         //分析视图文件是否存在
         if (!is_file($viewPath)) {

@@ -102,7 +102,7 @@ class Template {
         }
 
         //设置当前视图的默认目录路径
-        $this->_viewPath = BASE_PATH . DS . $viewDirName . DS;
+        $this->_viewPath = BASE_PATH . DS . $viewDirName;
 
         //设置视图编译缓存文件的默认目录路径
         $this->_compilePath = CACHE_PATH . DS . 'views' . DS;
@@ -225,7 +225,7 @@ class Template {
 
         //分析layout视图
         if ($this->_layout) {
-            $layoutFile   = $this->_viewPath . 'layout' . DS . $this->_layout . VIEW_EXT;
+            $layoutFile   = $this->_viewPath . DS . 'layout' . DS . $this->_layout . VIEW_EXT;
             $layoutStatus = is_file($layoutFile) ? true : false;
         } else {
             $layoutStatus = false;
