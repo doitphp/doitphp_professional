@@ -114,6 +114,7 @@ class Client {
         'iPhone'          => 'iPhone',
         'Symbian'         => 'Symbian',
         'Mac OS X'        => 'Mac OS X',
+        'Windows Phone'   => 'Windows Phone',
         'Ubuntu'          => 'Ubuntu',
         'Debian'          => 'Debian',
         'Fedora'          => 'Fedora',
