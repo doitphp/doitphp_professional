@@ -41,7 +41,7 @@ class Script {
                 $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.min.js?version=1.11.1\"></script>\r";
                 break;
             case 'form':
-                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.form.min.js?version=2.8.3\"></script>\r";
+                $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/jquery/jquery.form.min.js?version=3.51.0\"></script>\r";
                 break;
             case 'calendar':
                 $html = "<script type=\"text/javascript\" src=\"" . $baseDirUrl . "/calendar/WdatePicker.js?version=4.7.2\"></script>\r";
