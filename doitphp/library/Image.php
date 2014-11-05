@@ -208,6 +208,8 @@ class Image {
 
             case 3:
                 $this->_image = imagecreatefrompng($url);
+                //bug fix #11 :透明背景的png需要使用imagesavealpha保存alpha通道才能不变成背景黑色
+                imagesavealpha($this->_image, true);
                 $this->_type  = 'png';
                 break;
 
