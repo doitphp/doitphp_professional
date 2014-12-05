@@ -208,6 +208,7 @@ class Image {
 
             case 3:
                 $this->_image = imagecreatefrompng($url);
+                imagesavealpha($this->_image, true);
                 $this->_type  = 'png';
                 break;
 
