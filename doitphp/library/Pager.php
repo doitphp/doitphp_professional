@@ -372,6 +372,7 @@ class Pager {
             }
         }
 
+        $html .= '</ul></div>';
         return $html;
     }
 
