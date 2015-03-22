@@ -64,8 +64,13 @@ class Cache_File {
         if (!$key) {
             return false;
         }
-        $expire   = is_null($expire) ? $this->_defaultOptions['expire'] : $expire;
-        $expire   = time() + $expire;
+        if(is_null($expire)){
+            $expire = time() + $this->_defaultOptions['expire'];
+        }else if ($expire === 0) {
+            $expire = 0;
+        }else{
+            $expire += time();
+        }
 
         //分析缓存文件
         $filePath = $this->_parseCacheFile($key);
@@ -101,8 +106,8 @@ class Cache_File {
 
         $data = include $filePath;
 
-        //当缓存文件过期时
-        if (time() > $data[0]) {
+        //当缓存文件非永久且过期时
+        if ($data[0] && time() > $data[0]) {
             unlink($filePath);
             return false;
         }
