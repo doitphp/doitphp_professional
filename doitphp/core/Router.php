@@ -225,21 +225,6 @@ abstract class Router {
             $uri = substr($uri, 0, $pos);
         }
 
-        //当自定义URL路由功能开启时
-        if ($uri && Configure::get('application.customUrlRouter') === true) {
-            $ruleArray = Configure::get('router');
-            if (is_array($ruleArray) && $ruleArray) {
-                //利用正则表达式将自定义的网址替换掉，替换为真实的网址
-                foreach ($ruleArray as $routerKey=>$routerValue) {
-                    $routerKey = str_replace(array(':any', ':num'), array('.+?', '[0-9]+'), $routerKey);
-                    if (preg_match('#' . $routerKey . '#', $uri)) {
-                        $uri = preg_replace('#' . $routerKey . '#', $routerValue, $uri);
-                        break;
-                    }
-                }
-            }
-        }
-
         //当uri的内容极为简单,没有包含任何路由信息时
         if (!$uri || $uri == '/') {
             return URL_SEGEMENTATION;

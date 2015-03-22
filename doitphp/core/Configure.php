@@ -246,9 +246,6 @@ abstract class Configure {
         //设置路由分割符
         $defaultConfig['urlSegmentation']     = '/';
 
-        //设置自定义路由模式是否开启
-        $defaultConfig['customUrlRouter']     = false;
-
         //设置默认module、controller及action名
         $defaultConfig['defaultModule']       = '';
         $defaultConfig['defaultController']   = 'Index';
