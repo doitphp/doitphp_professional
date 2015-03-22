@@ -219,14 +219,6 @@ abstract class Router {
             return URL_SEGEMENTATION;
         }
 
-        //当开启Rewrite设置时，去掉网址后缀
-        if (DOIT_REWRITE === true) {
-            $suffixLength = strlen(URL_SUFFIX);
-            if ((strlen($uri) > $suffixLength) && (substr($uri, -$suffixLength) == URL_SUFFIX)) {
-                $uri = substr($uri, 0, -$suffixLength);
-            }
-        }
-
         //如网址(URL)含有'?'(问号),则过滤掉问号(?)及其后面的所有字符串
         $pos = strpos($uri, '?');
         if ($pos !== false) {
@@ -305,10 +297,6 @@ abstract class Router {
 
                 //清空不必要的内存占用
                 unset($paramArray);
-
-                if (DOIT_REWRITE === true) {
-                    $url .= URL_SUFFIX;
-                }
             }
 
             return $url;

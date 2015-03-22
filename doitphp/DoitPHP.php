@@ -260,11 +260,6 @@ abstract class Doit {
             define('URL_SEGEMENTATION', Configure::get('application.urlSegmentation'));
         }
 
-        //定义路由网址的伪静态网址的后缀。注：不要忘记了.(点)
-        if (!defined('URL_SUFFIX')) {
-            define('URL_SUFFIX', Configure::get('application.urlSuffix'));
-        }
-
         //定义路由网址的格式。注：get/path
         if (!defined('URL_FORMAT')) {
             define('URL_FORMAT', Configure::get('application.urlFormat'));

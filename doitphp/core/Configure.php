@@ -246,9 +246,6 @@ abstract class Configure {
         //设置路由分割符
         $defaultConfig['urlSegmentation']     = '/';
 
-        //设置路由网址后缀。注：只有开启URL的rewrite功能时，才生效
-        $defaultConfig['urlSuffix']           = self::HTML_VIEW_EXT;
-
         //设置自定义路由模式是否开启
         $defaultConfig['customUrlRouter']     = false;
 
