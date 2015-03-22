@@ -173,12 +173,12 @@ abstract class Controller {
      * @access public
      *
      * @param string $message 所要显示的提示信息
-     * @param string $gotoUrl 所要跳转的自定义网址
-     * @param integer $limitTime 显示信息的有效期,注:(单位:秒) 默认为5秒
+     * @param string $gotoUrl 所要跳转的自定义网址, 默认为：返回上一页
+     * @param integer $limitTime 显示信息的有效期,注:(单位:秒) 默认为3秒
      *
      * @return string
      */
-    public static function showMsg($message, $gotoUrl = null, $limitTime = 5) {
+    public static function showMsg($message, $gotoUrl = -1, $limitTime = 3) {
 
         return Response::showMsg($message, $gotoUrl, $limitTime);
     }

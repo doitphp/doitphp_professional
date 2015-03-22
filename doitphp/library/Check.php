@@ -192,7 +192,7 @@ class Check {
             return false;
         }
         //获取字符串长度
-        $length = strlen(trim($string));
+        $length = (strlen($string) + mb_strlen($string, 'UTF8')) / 2;
 
         return (($length >= (int)$min) && ($length <= (int)$max)) ? true : false;
     }

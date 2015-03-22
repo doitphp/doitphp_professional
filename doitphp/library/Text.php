@@ -29,7 +29,7 @@ class Text {
      *
      * @return string
      */
-    public static function substr($str, $start = 0, $length, $charset = "utf-8") {
+    public static function substr($str, $start = 0, $length, $charset = "UTF8") {
 
         //参数分析
         if (!$str) {

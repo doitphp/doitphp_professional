@@ -1484,7 +1484,7 @@ class Model {
          }
 
          //对信息进行转义
-         $this->_errorInfo = trim($message);
+         $this->_errorInfo = $message;
 
          return true;
     }
