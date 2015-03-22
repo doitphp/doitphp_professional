@@ -17,7 +17,7 @@ if (!defined('IN_DOIT')) {
     exit();
 }
 
-class DbMongo {
+class MongoDb {
 
     /**
      * 单例模式实例化本类
