@@ -779,10 +779,11 @@ class Model {
      * @param mixed $where 查询条件
      * @param mixed $value 待转义的数值
      * @param mixed $fields 返回数据的数据表的有效字段，默认为全部字段。
+     * @param mixed $orderDesc 排序条件
      *
      * @return array
      */
-    public function getOne($where = null, $value = null, $fields = null) {
+    public function getOne($where = null, $value = null, $fields = null, $orderDesc = null) {
 
         //分析查询条件
         $condition = $this->_parseCondition($where, $value);
@@ -797,6 +798,12 @@ class Model {
         $tableName = $this->getTableName();
 
         $sql = "SELECT {$fields} FROM {$tableName} {$condition['where']}";
+
+        //分析数据的排序
+        $orderString = $this->_parseOrder($orderDesc);
+        if ($orderString) {
+            $sql .= ' ' . $orderString;
+        }
 
         return $this->_slave()->getOne($sql, $condition['value']);
     }
