@@ -121,7 +121,7 @@ class Curl {
     public static function get($url, $data = array(), $proxy = null, $expire = 30) {
 
         //参数分析
-        if (!$url || !is_array($data)) {
+        if (!$url) {
             return false;
         }
 
@@ -208,7 +208,7 @@ class Curl {
     public static function post($url, $data = array(), $proxy = null, $expire = 30) {
 
         //参数分析
-        if (!$url || !is_array($data)) {
+        if (!$url) {
             return false;
         }
 
