@@ -4,7 +4,7 @@
  *
  * 注:部分代码参考了Qeephp 2.1 memecached.php代码
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @copyright  Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
@@ -20,7 +20,7 @@ if (!defined('IN_DOIT')) {
 /**
  * 使用说明
  *
- * @author tommy<streen003@gmail.com>
+ * @author tommy<tommy@doitphp.com>
  *
  * @example
  *

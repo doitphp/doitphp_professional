@@ -2,11 +2,11 @@
 /**
  * 多语言管理
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
  * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: Language.php 2.0 2012-12-22 19:41:54Z tommy <streen003@gmail.com> $
+ * @version $Id: Language.php 2.0 2012-12-22 19:41:54Z tommy <tommy@doitphp.com> $
  * @package core
  * @since 1.0
  */

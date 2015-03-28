@@ -3,7 +3,7 @@
  * client class file
  *
  * 获取客户端IP地址,操作系统,浏览器信息等
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @copyright  Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}

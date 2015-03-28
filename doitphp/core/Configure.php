@@ -2,7 +2,7 @@
 /**
  * doitPHP配置文件管理类
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @copyright Copyright (C) 2012 www.doitphp.com All rights reserved.
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}

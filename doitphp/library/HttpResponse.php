@@ -4,7 +4,7 @@
  *
  * 设置HTTP状态、获取文件的MIME类型
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @copyright Copyright (c) 2010 Tommycode Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}

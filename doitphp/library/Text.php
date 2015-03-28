@@ -2,7 +2,7 @@
 /**
  * 字符串（文字）常用操作类
  *
- * @author thinkPHP team, DooPHP team, tommy<streen003@gmail.com>
+ * @author thinkPHP team, DooPHP team, tommy<tommy@doitphp.com>
  * @copyright  Copyright (c) 2010 ThinkPHP, DoitPHP
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}

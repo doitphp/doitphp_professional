@@ -2,11 +2,11 @@
 /**
  * 获取HTTP的响应信息
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
  * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: Response.php 2.0 2012-11-28 00:50:27Z tommy <streen003@gmail.com> $
+ * @version $Id: Response.php 2.0 2012-11-28 00:50:27Z tommy <tommy@doitphp.com> $
  * @package core
  * @since 1.0
  */

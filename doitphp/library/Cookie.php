@@ -2,11 +2,11 @@
 /**
  * 对cookie数据的管理操作
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
  * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: Cookie.php 2.0 2012-12-20 22:07:17Z tommy <streen003@gmail.com> $
+ * @version $Id: Cookie.php 2.0 2012-12-20 22:07:17Z tommy <tommy@doitphp.com> $
  * @package library
  * @since 1.0
  */

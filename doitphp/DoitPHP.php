@@ -4,11 +4,11 @@
  *
  * 初始化框架的基本设置、路由分发、及提供常用的类方法(静态加载文件、单例模式实例化对象、获取当前的Module名称、获取当前的Controller名称、获取当前的Action名称)
  *
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
  * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: DoitPHP.php 2.0 2012-11-25 20:09:56Z tommy <streen003@gmail.com> $
+ * @version $Id: DoitPHP.php 2.0 2012-11-25 20:09:56Z tommy <tommy@doitphp.com> $
  * @package core
  * @since 1.0
  */
@@ -53,7 +53,7 @@ if (!defined('DOIT_ROOT')) {
  * Doitphp框架核心全局控制类
  *
  * 用于初始化程序运行及完成基本设置
- * @author tommy <streen003@gmail.com>
+ * @author tommy <tommy@doitphp.com>
  * @version 2.0
  */
 abstract class Doit {
