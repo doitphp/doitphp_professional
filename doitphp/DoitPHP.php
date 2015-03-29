@@ -43,11 +43,6 @@ if (!defined('DOIT_ROOT')) {
     define('DOIT_ROOT', dirname(__FILE__));
 }
 
-/**
- * 设置程序开始执行时间。根据实际需要，需自行开启。如开启去掉下面的//
- */
-//define('DOIT_START_TIME',microtime(true));
-
 
 /**
  * Doitphp框架核心全局控制类
