@@ -97,7 +97,7 @@ abstract class Response {
      *
      * 本方法支持URL的自动跳转，当显示时间有效期失效时则跳转到自定义网址，若跳转网址为空则函数不执行跳转功能，当自定义网址参数为-1时默认为:返回上一页。
      * 注：显示提示信息的页面模板内容可以自定义. 方法：在项目视图目录中的error子目录中新建message.php文件,自定义该文件内容。
-     * 模板文件输出信息处代码参考doitphp子目录中文件：views/html/message.php
+     * 模板文件输出信息处代码参考doitphp子目录中文件：views/errors/message.php
      *
      * @access public
      *
@@ -131,7 +131,7 @@ abstract class Response {
 
         $messageTemplateFile = BASE_PATH . DS . 'views/errors/message.php';
 
-        is_file($messageTemplateFile) ? include_once $messageTemplateFile : include_once DOIT_ROOT . DS . 'views/html/message.php';
+        is_file($messageTemplateFile) ? include_once $messageTemplateFile : include_once DOIT_ROOT . DS . 'views/errors/message.php';
 
         exit();
     }
@@ -211,7 +211,7 @@ abstract class Response {
         }
 
         //加载,分析,并输出excepiton文件内容
-        include_once DOIT_ROOT . DS . 'views/html/exception.php';
+        include_once DOIT_ROOT . DS . 'views/errors/exception.php';
 
         if (defined('DOIT_DEBUG') && DOIT_DEBUG === false && $level != 'Normal') {
             //写入程序运行日志

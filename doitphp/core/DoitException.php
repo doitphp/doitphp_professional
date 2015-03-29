@@ -48,7 +48,7 @@ class DoitException extends Exception {
 
         ob_start();
         //加载,分析,并输出excepiton文件内容
-        include_once DOIT_ROOT . DS . 'views/html/exception.php';
+        include_once DOIT_ROOT . DS . 'views/errors/exception.php';
 
         $exceptionMessage = ob_get_clean();
 

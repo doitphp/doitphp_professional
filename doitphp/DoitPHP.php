@@ -295,7 +295,7 @@ abstract class Doit {
 
         $viewFilePath = BASE_PATH . DS . 'views/errors/error404.html';
         //判断自定义404页面文件是否存在,若不存在则加载默认404页面
-        is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . DS . 'views/html/error404.html');
+        is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . DS . 'views/errors/error404.html');
 
         //既然提示404错误信息,程序继续执行下去也毫无意义,所以要终止(exit).
         exit();
