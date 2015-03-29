@@ -147,38 +147,6 @@ abstract class Configure {
     }
 
     /**
-     * 设置参数值
-     *
-     * 设置应用配置文件内容的参数值
-     *
-     * @access public
-     *
-     * @param string $key 应用配置文件内容的参数名
-     * @param mixed $value 应用配置文件内容的参数值
-     *
-     * @return boolean
-     */
-    public static function set($key, $value = null) {
-
-        //分析参数
-        if (!$key) {
-            return false;
-        }
-
-        if (strpos($key, '.') === false) {
-            self::$_data[$key] = $value;
-            return true;
-        }
-
-        $keyArray  = explode('.', $key);
-        $keyString = "['" . implode("']['", $keyArray) . "']";
-
-        eval('self::$_data' . $keyString . '=$value;');
-
-        return true;
-    }
-
-    /**
      * 获取项目配置文件内容
      *
      * 根据DoitPHP项目的配置文件名称，获取该项目配置文件的内容，并将该内容进行返回
