@@ -59,9 +59,9 @@ if (!defined('IN_DOIT')) {
 //$config['application']['logPath'] = APP_ROOT . 'logs';
 
 /**
- * 设置视图文件的格式。Configure::HTML_VIEW_EXT为html;Configure::PHP_VIEW_EXT为php。默认为：php。
+ * 设置视图文件的格式。Configure::VIEW_EXT_HTML为html;Configure::VIEW_EXT_PHP为php。默认为：php。
  */
-//$config['application']['viewExt'] = Configure::HTML_VIEW_EXT;
+//$config['application']['viewExt'] = Configure::VIEW_EXT_HTML;
 
 /**
  * 设置数据库(关系型数据库)的连接参数。 注：仅支持PDO连接。
