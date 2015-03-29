@@ -34,7 +34,7 @@ abstract class Router {
      */
     public static function getRequest() {
 
-        //当访问网址的格式时。如：http://yourdomain/index.php?router=member/list/index?id=23
+        //当访问网址的格式时。如：http://yourdomain/index.php?router=member/list/index&id=23
         if (URL_FORMAT == Configure::GET_FORMAT) {
 
             if (isset($_GET[self::$_routerVar]) && $_GET[self::$_routerVar] == true) {
@@ -266,12 +266,7 @@ abstract class Router {
         //当前的网址格式为:路由网址模式时
         if (URL_FORMAT == Configure::PATH_FORMAT) {
 
-            //当开启Rewrite功能时
-            if (DOIT_REWRITE === true) {
-                $url .= $route;
-            } else {
-                $url .= ENTRY_SCRIPT_NAME . URL_SEGEMENTATION . $route;
-            }
+            $url .= ((DOIT_REWRITE === false) ? ENTRY_SCRIPT_NAME . URL_SEGEMENTATION : '') . $route;
 
             if ($params && is_array($params)) {
                 $paramArray = array();
@@ -287,12 +282,7 @@ abstract class Router {
             return $url;
         }
 
-        //当开启Rewrite功能时
-        if (DOIT_REWRITE === false) {
-            $url .= ENTRY_SCRIPT_NAME;
-        }
-
-        $url .= '?' . self::$_routerVar . '=' . $route;
+        $url .= ((DOIT_REWRITE === false) ? ENTRY_SCRIPT_NAME : '') . '?' . self::$_routerVar . '=' . $route;
 
         if ($params && is_array($params)) {
             $url .= '&' . http_build_query($params);
