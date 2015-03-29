@@ -111,26 +111,6 @@ class Calendar {
     }
 
     /**
-     * 输出日历的html内容
-     *
-     * @access public
-     * @return string
-     */
-    public function output() {
-
-        $data = $this->_processData();
-
-        //分析系统集成的日历视图路径
-        $viewPath = DOIT_ROOT . DS . 'views' . DS . 'html' . DS . 'calender.php';
-
-        ob_start();
-        include $viewPath;
-        $calenderHtml = ob_get_clean();
-
-        return $calenderHtml;
-    }
-
-    /**
      * 处理日历数组
      *
      * @access protected
