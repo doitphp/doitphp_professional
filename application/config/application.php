@@ -46,17 +46,17 @@ if (!defined('IN_DOIT')) {
 /**
  * 自定义项目(application)目录路径的设置。注：结尾无需"/"，建议用绝对路径。
  */
-//$config['application']['basePath'] = APP_ROOT . 'application';
+//$config['application']['basePath'] = APP_ROOT . '/application';
 
 /**
  * 自定义缓存(cache)目录路径的设置。注：结尾无需"/"，建议用绝对路径。
  */
-//$config['application']['cachePath'] = APP_ROOT . 'cache';
+//$config['application']['cachePath'] = APP_ROOT . '/cache';
 
 /**
  * 自定义日志(log)目录路径的设置。注：结尾无需"/"，建议用绝对路径。
  */
-//$config['application']['logPath'] = APP_ROOT . 'logs';
+//$config['application']['logPath'] = APP_ROOT . '/logs';
 
 /**
  * 设置视图文件的格式。Configure::VIEW_EXT_HTML为html;Configure::VIEW_EXT_PHP为php。默认为：php。
