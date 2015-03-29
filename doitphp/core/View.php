@@ -277,7 +277,7 @@ class View {
             $viewFileName = Doit::getControllerName() . DS . Doit::getActionName();
         } else {
             $fileName     = str_replace('.', '/', $fileName);
-            $viewFileName = (strpos($fileName, '/') === false) ? Doit::getControllerName() . DS . $fileName : $fileName;
+            $viewFileName = ((strpos($fileName, '/') === false) ? Doit::getControllerName() . DS : '') . $fileName;
         }
 
         $viewPath = $this->_viewPath . DS . $viewFileName . VIEW_EXT;
