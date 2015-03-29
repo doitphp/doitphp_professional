@@ -36,7 +36,6 @@ abstract class AutoLoad {
     'Script'            => 'library/Script.php',
     'File'              => 'library/File.php',
     'Html'              => 'library/Html.php',
-    'Form'              => 'library/Form.php',
     'Cookie'            => 'library/Cookie.php',
     'Session'           => 'library/Session.php',
     'Image'             => 'library/Image.php',
@@ -55,7 +54,7 @@ abstract class AutoLoad {
     'Tree'              => 'library/Tree.php',
     'Player'            => 'library/Player.php',
     'Zip'               => 'library/Zip.php',
-    'DbMongo'           => 'library/DbMongo.php',
+    'MongoDb'           => 'library/MongoDb.php',
     'Language'          => 'library/Language.php',
     'Cart'              => 'library/Cart.php',
     'Cache'             => 'library/cache/Cache.php',
@@ -69,7 +68,6 @@ abstract class AutoLoad {
     'Pinyin'            => 'library/Pinyin.php',
     'Calendar'          => 'library/Calendar.php',
     'Benchmark'         => 'library/Benchmark.php',
-    'HtmlBuilder'       => 'library/HtmlBuilder.php',
     'HttpResponse'      => 'library/HttpResponse.php',
     'Ftp'               => 'library/Ftp.php',
     'Wsdl'              => 'library/Wsdl.php',
@@ -215,40 +213,25 @@ abstract class AutoLoad {
      * @access private
      *
      * @param string $className 所需要加载的类的名称,注:不含后缀名
-     * @param boolean $supportModule 是否支持模块(Module)文件的自动加载 (true:支持/false:不支持)
      *
      * @return void
      */
-    private static function _loadWidget($className, $supportModule = true) {
-
-        //定义所要加载的文件是否在模块(Module)目录中。(true:在/false:不在)
-        $isModule = false;
+    private static function _loadWidget($className) {
 
         //获取当前所运行的模块(Module)
         $moduleName = Doit::getModuleName();
 
-        //当支持模块(Module)文件自动加载开关开启时
-        if ($supportModule) {
-            //获取Widget文件目录路径
-            if (!$moduleName) {
-                $widgetHomePath = BASE_PATH . '/widgets';
-            } else {
-                $widgetHomePath = BASE_PATH . '/modules/' . $moduleName . '/widgets';
-                //重定义所要加载的文件是否在模块(Module)目录中
-                $isModule = true;
-            }
-        } else {
+        //获取Widget文件目录路径
+        if (!$moduleName) {
             $widgetHomePath = BASE_PATH . '/widgets';
+        } else {
+            $widgetHomePath = BASE_PATH . '/modules/' . $moduleName . '/widgets';
         }
 
         //分析Widget文件的实际路径
         $widgetFilePath = self::_parseFilePath($widgetHomePath, substr($className, 0, -6));
         //当Widget文件在Widget根目录中存在时
         if (!is_file($widgetFilePath)) {
-            //当模块(Module)中Widget目录不存在所要加载的Widget文件时，对application中Widget目录进行分析并加载Widget文件
-            if ($isModule) {
-                return self::_loadWidget($className, false);
-            }
             //当所要加载的Widget文件不存在时,显示错误提示信息
             Controller::halt('The Widget file: ' . $widgetFilePath . ' is not found!', 'Normal');
         }
@@ -264,31 +247,19 @@ abstract class AutoLoad {
      * @access private
      *
      * @param string $className 所需要加载的类的名称,注:不含后缀名
-     * @param boolean $supportModule 是否支持模块(Module)文件的自动加载 (true:支持/false:不支持)
      *
      * @return void
      */
-    private static function _loadLibrary($className, $supportModule = true) {
+    private static function _loadLibrary($className) {
 
-        //定义所要加载的文件是否在模块(Module)目录中。(true:在/false:不在)
-        $isModule = false;
+        //获取当前所运行的模块(Module)
+        $moduleName = Doit::getModuleName();
 
-        //当支持模块(Module)文件自动加载开关开启时
-        if ($supportModule) {
-            //获取当前所运行的模块(Module)
-            $moduleName = Doit::getModuleName();
-
-            //获取library文件目录路径
-            if (!$moduleName) {
-                $libraryHomePath = BASE_PATH . '/library';
-            } else {
-                $libraryHomePath = BASE_PATH . '/modules/' . $moduleName . '/library';
-                //重定义所要加载的文件是否在模块(Module)目录中
-                $isModule = true;
-            }
-        } else {
-            //获取library文件目录路径
+        //获取library文件目录路径
+        if (!$moduleName) {
             $libraryHomePath = BASE_PATH . '/library';
+        } else {
+            $libraryHomePath = BASE_PATH . '/modules/' . $moduleName . '/library';
         }
 
         //分析library文件的实际路径
@@ -296,10 +267,6 @@ abstract class AutoLoad {
 
         //当library文件在library根目录中存在时
         if (!is_file($libraryFilePath)) {
-            //当模块(Module)中Model目录不存在所要加载的Model文件时，对application中Model目录进行分析并加载Model文件
-            if ($isModule) {
-                return self::_loadLibrary($className, false);
-            }
             //当所要加载的library文件不存在时
             return false;
         }
