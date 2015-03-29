@@ -442,7 +442,7 @@ abstract class Controller {
      * $this->import('snoopy.php');
      *
      * 例二：
-     * $this->import(BASE_PATH . DS . 'extensions/editer/fck.php');
+     * $this->import(BASE_PATH . '/extensions/editer/fck.php');
      *
      * 例三：加载本模块(Module)中的文件
      * $this->import('#_SELF_PATH/phpexcel/phpexcel.php');
@@ -469,7 +469,7 @@ abstract class Controller {
             $moduleName = Doit::getModuleName();
             //当调用本函数(类方法)的代码为模块(Module)文件时
             if ($moduleName) {
-                $modulePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS;
+                $modulePath = BASE_PATH . '/modules/' . $moduleName . DS;
                 $fileName = str_replace('#_SELF_PATH', $modulePath, $fileName);
             } else {
                 $fileName = str_replace('#_SELF_PATH', '', $fileName);
@@ -487,10 +487,10 @@ abstract class Controller {
             //当支持模块开关开启时
             if (!$supportModule) {
                 //分析获取文件的路径
-                $filePath = realpath(BASE_PATH . DS . 'library' . DS . $fileName);
+                $filePath = realpath(BASE_PATH . '/library/' . $fileName);
             } else {
                 //分析获取文件的路径
-                $filePath   = (!$moduleName) ? realpath(BASE_PATH . DS . 'library' . DS . $fileName) : realpath($modulePath . $fileName);
+                $filePath   = (!$moduleName) ? realpath(BASE_PATH . '/library/' . $fileName) : realpath($modulePath . $fileName);
             }
         }
 

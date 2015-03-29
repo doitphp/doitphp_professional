@@ -76,7 +76,7 @@ class View {
         if (!$moduleName) {
             $viewDirName = 'views';
         } else {
-            $viewDirName = 'modules' . DS . $moduleName . DS . 'views';
+            $viewDirName = 'modules/' . $moduleName . '/views';
         }
 
         //设置当前视图的默认目录路径
@@ -199,7 +199,7 @@ class View {
 
         //分析,加载,显示layout视图内容
         if ($this->_layout) {
-            $layoutFile = $this->_viewPath . DS . 'layout' . DS . $this->_layout . VIEW_EXT;
+            $layoutFile = $this->_viewPath . '/layout/' . $this->_layout . VIEW_EXT;
             if (is_file($layoutFile)) {
                 ob_start();
                 include $layoutFile;
@@ -472,7 +472,7 @@ class View {
      */
     protected function _parseCacheFile($cacheId) {
 
-        return CACHE_PATH . DS . 'htmls' . DS . (!Doit::getModuleName() ? '' : Doit::getModuleName() . DS) . Doit::getControllerName() . DS . md5($cacheId) . '.action.html';
+        return CACHE_PATH . '/htmls/' . (!Doit::getModuleName() ? '' : Doit::getModuleName() . DS) . Doit::getControllerName() . DS . md5($cacheId) . '.action.html';
     }
 
     /**

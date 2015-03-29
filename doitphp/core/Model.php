@@ -389,7 +389,7 @@ class Model {
     protected function _getCacheFile($tableName) {
 
         //分析Model缓存文件的目录
-        $cachePath = CACHE_PATH . DS . 'models';
+        $cachePath = CACHE_PATH . '/models';
 
         return $cachePath . DS . $tableName . '.tableInfo.cache.php';
     }

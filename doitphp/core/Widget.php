@@ -47,12 +47,12 @@ abstract class Widget extends Controller {
 
             //获取Widget文件目录路径
             if (!$moduleName) {
-                $widgetPath = BASE_PATH . DS . 'widgets';
+                $widgetPath = BASE_PATH . '/widgets';
             } else {
-                $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
+                $widgetPath = BASE_PATH . '/modules/' . $moduleName . '/widgets';
             }
 
-            $this->_viewPath = $widgetPath . DS . 'views';
+            $this->_viewPath = $widgetPath . '/views';
         }
 
         return true;

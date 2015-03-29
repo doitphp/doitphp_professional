@@ -42,16 +42,16 @@ class WidgetTemplate extends Template {
 
         //获取Widget文件目录路径
         if (!$moduleName) {
-            $widgetPath = BASE_PATH . DS . 'widgets';
+            $widgetPath = BASE_PATH . '/widgets';
         } else {
-            $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
+            $widgetPath = BASE_PATH . '/modules/' . $moduleName . '/widgets';
         }
 
         //设置挂件视图模板目录的路径
-        $this->_viewPath = $widgetPath . DS . 'views';
+        $this->_viewPath = $widgetPath . '/views';
 
         //设置视图编译缓存文件的默认目录路径
-        $this->_compilePath = CACHE_PATH . DS . 'views' . DS . 'widgets';
+        $this->_compilePath = CACHE_PATH . '/views' . '/widgets';
 
         return true;
     }

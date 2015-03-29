@@ -197,7 +197,7 @@ abstract class Configure {
         }
 
         if (!isset(self::$_config[$fileName])) {
-            $filePath = BASE_PATH . DS . 'config' . DS . $fileName . '.php';
+            $filePath = BASE_PATH . '/config/' . $fileName . '.php';
             //判断文件是否存在
             if (!is_file($filePath)) {
                 Controller::halt('The configuration file: ' . $fileName . '.php is not exists!', 'Normal');

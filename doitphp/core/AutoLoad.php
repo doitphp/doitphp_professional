@@ -140,9 +140,9 @@ abstract class AutoLoad {
 
         //获取Controller文件目录路径
         if (!$moduleName) {
-            $controllerHomePath = BASE_PATH . DS . 'controllers';
+            $controllerHomePath = BASE_PATH . '/controllers';
         } else {
-            $controllerHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'controllers';
+            $controllerHomePath = BASE_PATH . '/modules/' . $moduleName . '/controllers';
         }
 
         //分析controller名称
@@ -190,9 +190,9 @@ abstract class AutoLoad {
 
         //获取Model文件目录路径
         if (!$moduleName) {
-            $modelHomePath = BASE_PATH . DS . 'models';
+            $modelHomePath = BASE_PATH . '/models';
         } else {
-            $modelHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'models';
+            $modelHomePath = BASE_PATH . '/modules/' . $moduleName . '/models';
         }
 
         //分析Model文件的实际路径
@@ -231,14 +231,14 @@ abstract class AutoLoad {
         if ($supportModule) {
             //获取Widget文件目录路径
             if (!$moduleName) {
-                $widgetHomePath = BASE_PATH . DS . 'widgets';
+                $widgetHomePath = BASE_PATH . '/widgets';
             } else {
-                $widgetHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
+                $widgetHomePath = BASE_PATH . '/modules/' . $moduleName . '/widgets';
                 //重定义所要加载的文件是否在模块(Module)目录中
                 $isModule = true;
             }
         } else {
-            $widgetHomePath = BASE_PATH . DS . 'widgets';
+            $widgetHomePath = BASE_PATH . '/widgets';
         }
 
         //分析Widget文件的实际路径
@@ -280,15 +280,15 @@ abstract class AutoLoad {
 
             //获取library文件目录路径
             if (!$moduleName) {
-                $libraryHomePath = BASE_PATH . DS . 'library';
+                $libraryHomePath = BASE_PATH . '/library';
             } else {
-                $libraryHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'library';
+                $libraryHomePath = BASE_PATH . '/modules/' . $moduleName . '/library';
                 //重定义所要加载的文件是否在模块(Module)目录中
                 $isModule = true;
             }
         } else {
             //获取library文件目录路径
-            $libraryHomePath = BASE_PATH . DS . 'library';
+            $libraryHomePath = BASE_PATH . '/library';
         }
 
         //分析library文件的实际路径

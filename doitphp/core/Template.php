@@ -98,14 +98,14 @@ class Template {
         if (!$moduleName) {
             $viewDirName = 'views';
         } else {
-            $viewDirName = 'modules' . DS . $moduleName . DS . 'views';
+            $viewDirName = 'modules/' . $moduleName . '/views';
         }
 
         //设置当前视图的默认目录路径
         $this->_viewPath = BASE_PATH . DS . $viewDirName;
 
         //设置视图编译缓存文件的默认目录路径
-        $this->_compilePath = CACHE_PATH . DS . 'views';
+        $this->_compilePath = CACHE_PATH . '/views';
 
         return true;
     }
@@ -225,7 +225,7 @@ class Template {
 
         //分析layout视图
         if ($this->_layout) {
-            $layoutFile   = $this->_viewPath . DS . 'layout' . DS . $this->_layout . VIEW_EXT;
+            $layoutFile   = $this->_viewPath . '/layout/' . $this->_layout . VIEW_EXT;
             $layoutStatus = is_file($layoutFile) ? true : false;
         } else {
             $layoutStatus = false;
@@ -239,7 +239,7 @@ class Template {
             $viewContent = ob_get_clean();
         } else {
             //加载layout文件
-            $layoutCompileFile = $this->_getCompileFile('layout' . DS . $this->layout);
+            $layoutCompileFile = $this->_getCompileFile('layout/' . $this->layout);
             if ($this->_isCompile($layoutFile, $layoutCompileFile)) {
                 //重新生成layout视图编译文件
                 $layoutContent = $this->_loadViewFile($layoutFile);
@@ -718,7 +718,7 @@ class Template {
      */
     protected function _parseCacheFile($cacheId) {
 
-        return CACHE_PATH . DS . 'htmls' . DS . (!Doit::getModuleName() ? '' : Doit::getModuleName() . DS) . Doit::getControllerName() . DS . md5($cacheId) . '.action.html';
+        return CACHE_PATH . '/htmls/' . (!Doit::getModuleName() ? '' : Doit::getModuleName() . DS) . Doit::getControllerName() . DS . md5($cacheId) . '.action.html';
     }
 
     /**

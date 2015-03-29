@@ -130,7 +130,7 @@ abstract class Extension extends Controller {
      */
     protected static function _getExtRoot($extensionName) {
 
-        return BASE_PATH . DS . 'extensions' . DS . strtolower($extensionName);
+        return BASE_PATH . '/extensions/' . strtolower($extensionName);
     }
 
     /**
@@ -141,7 +141,7 @@ abstract class Extension extends Controller {
      */
     public function getExtRoot() {
 
-        return BASE_PATH . DS . 'extensions' . DS . $this->getExtName();
+        return BASE_PATH . '/extensions/' . $this->getExtName();
     }
 
     /**
