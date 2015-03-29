@@ -354,7 +354,7 @@ abstract class Doit {
             //分析文件是不是真实存在,若文件不存在,则只能...
             if (!is_file($filePath)) {
                 //当所要加载的文件不存在时,错误提示
-                Controller::halt('The file: ' . $filePath . ' is not found!');
+                Controller::halt('The file: ' . $filePath . ' is not found!', 'Normal');
             }
 
             include_once $filePath;
