@@ -223,13 +223,13 @@ abstract class Configure {
         $defaultConfig = array();
 
         //设置应用目录(application)的路径
-        $defaultConfig['basePath']            = APP_ROOT . '/application';
+        $defaultConfig['basePath']            = APP_ROOT . DS . 'application';
 
         //设置缓存目录的路径
-        $defaultConfig['cachePath']           = APP_ROOT . '/cache';
+        $defaultConfig['cachePath']           = APP_ROOT . DS . 'cache';
 
         //设置日志目录的路径
-        $defaultConfig['logPath']             = APP_ROOT . '/logs';
+        $defaultConfig['logPath']             = APP_ROOT . DS . 'logs';
 
         //设置是否开启调试模式（开启后,程序运行出现错误时,显示错误信息,便于程序调试）
         $defaultConfig['debug']               = false;
