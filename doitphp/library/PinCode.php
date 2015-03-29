@@ -106,7 +106,7 @@ class PinCode {
     public function __construct() {
 
         $this->_fontSize     = 14;
-        $this->_fontName     = DOIT_ROOT . DS . 'views/source/aispec.ttf';
+        $this->_fontName     = DOIT_ROOT . '/views/source/aispec.ttf';
         $this->_sessionName  = 'doitphp_pincode_session_id';
         $this->_width        = 90;
         $this->_height       = 30;

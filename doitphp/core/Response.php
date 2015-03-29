@@ -131,7 +131,7 @@ abstract class Response {
 
         $messageTemplateFile = BASE_PATH . DS . 'views/errors/message.php';
 
-        is_file($messageTemplateFile) ? include_once $messageTemplateFile : include_once DOIT_ROOT . DS . 'views/errors/message.php';
+        is_file($messageTemplateFile) ? include_once $messageTemplateFile : include_once DOIT_ROOT . '/views/errors/message.php';
 
         exit();
     }
@@ -211,7 +211,7 @@ abstract class Response {
         }
 
         //加载,分析,并输出excepiton文件内容
-        include_once DOIT_ROOT . DS . 'views/errors/exception.php';
+        include_once DOIT_ROOT . '/views/errors/exception.php';
 
         if (defined('DOIT_DEBUG') && DOIT_DEBUG === false && $level != 'Normal') {
             //写入程序运行日志

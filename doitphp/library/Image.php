@@ -176,7 +176,7 @@ class Image {
     public function __construct() {
 
         $this->_fontSize = 14;
-        $this->_fontName = DOIT_ROOT . DS . 'views/source/aispec.ttf';
+        $this->_fontName = DOIT_ROOT . '/views/source/aispec.ttf';
 
         return true;
     }
@@ -646,7 +646,7 @@ class Image {
 
         if ($this->_image && !$this->_waterImage) {
 
-            $waterUrl = (!$this->_imageUrl) ? DOIT_ROOT . DS . 'views/source/watermark' . '.' . $this->_type : $this->_imageUrl;
+            $waterUrl = (!$this->_imageUrl) ? DOIT_ROOT . '/views/source/watermark' . '.' . $this->_type : $this->_imageUrl;
 
             list($this->_waterWidth, $this->_waterHeight, $type) = getimagesize($waterUrl);
 

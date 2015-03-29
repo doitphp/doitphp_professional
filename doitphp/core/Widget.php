@@ -74,7 +74,7 @@ abstract class Widget extends Controller {
         }
 
         //分析视图类文件路径
-        $filePath = DOIT_ROOT . DS . 'core' . DS . 'WidgetTemplate.php';
+        $filePath = DOIT_ROOT . '/core/WidgetTemplate.php';
 
         //加载视图处理类文件
         Doit::loadFile($filePath);
