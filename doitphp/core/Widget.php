@@ -139,7 +139,7 @@ abstract class Widget extends Controller {
 
         //模板变量赋值
         if ($this->_options) {
-               extract($this->_options, EXTR_PREFIX_SAME, 'data');
+            extract($this->_options, EXTR_PREFIX_SAME, 'data');
             //清空不必要的内存占用
             $this->_options = array();
         }
