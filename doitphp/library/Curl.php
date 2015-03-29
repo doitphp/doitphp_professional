@@ -48,7 +48,7 @@ class Curl {
      *
      * @return object
      */
-    public function setBrowserAgent($userAgent) {
+    public function setUserAgent($userAgent) {
 
         //参数分析
         if (!$userAgent) {
@@ -112,11 +112,10 @@ class Curl {
      *
      * @example
      *
-     * $proxy = '192.168.1.110:2010';
      * $url = 'http://www.doitphp.com/';
      *
-     * $curl = new curl();
-     * $curl ->get($url, $proxy);
+     * $curl = new Curl();
+     * $curl ->get($url);
      */
     public static function get($url, $data = array(), $proxy = null, $expire = 30) {
 
@@ -153,15 +152,17 @@ class Curl {
         }
 
         if (self::$_cookieSupport === true) {
-            $cookieFile = self::_parseCookieFile($url);
+            $cookieFile = self::_parseCookieFile();
             //cookie设置
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
             curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
         }
 
         //设置浏览器
-        curl_setopt($ch, CURLOPT_USERAGENT, (!self::$_userAgent) ? $_SERVER['HTTP_USER_AGENT'] : self::$_userAgent);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
+        if (self::$_userAgent || $_SERVER['HTTP_USER_AGENT']) {
+            curl_setopt($ch, CURLOPT_USERAGENT, (!self::$_userAgent) ? $_SERVER['HTTP_USER_AGENT'] : self::$_userAgent);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+        }
 
         //使用自动跳转
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -178,12 +179,9 @@ class Curl {
      * 获取cookie存贮文件的路径
      *
      * @access protected
-     *
-     * @param string $url 所要调用的网址
-     *
      * @return stirng
      */
-    protected static function _parseCookieFile($url) {
+    protected static function _parseCookieFile() {
 
         //分析cookie数据存贮文件
         if (self::$_cookieFilePath) {
@@ -233,20 +231,24 @@ class Curl {
         }
 
         if (self::$_cookieSupport === true) {
-            $cookieFile = self::_parseCookieFile($url);
+            $cookieFile = self::_parseCookieFile();
             //cookie设置
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
             curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
         }
 
         //设置浏览器
-        curl_setopt($ch, CURLOPT_USERAGENT, (!self::$_userAgent) ? $_SERVER['HTTP_USER_AGENT'] : self::$_userAgent);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
+        if (self::$_userAgent || $_SERVER['HTTP_USER_AGENT']) {
+            curl_setopt($ch, CURLOPT_USERAGENT, (!self::$_userAgent) ? $_SERVER['HTTP_USER_AGENT'] : self::$_userAgent);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+        }
 
         //发送一个常规的Post请求
         curl_setopt($ch, CURLOPT_POST, true);
         //Post提交的数据包
-        curl_setopt($ch,  CURLOPT_POSTFIELDS, $data);
+        if ($data) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        }
 
         //使用自动跳转
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
