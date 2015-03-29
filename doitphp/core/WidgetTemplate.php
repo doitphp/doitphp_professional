@@ -42,16 +42,16 @@ class WidgetTemplate extends Template {
 
         //获取Widget文件目录路径
         if (!$moduleName) {
-            $widgetPath = BASE_PATH . DS . 'widgets' . DS;
+            $widgetPath = BASE_PATH . DS . 'widgets';
         } else {
-            $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets' . DS;
+            $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
         }
 
         //设置挂件视图模板目录的路径
-        $this->_viewPath = $widgetPath . 'views' . DS;
+        $this->_viewPath = $widgetPath . DS . 'views';
 
         //设置视图编译缓存文件的默认目录路径
-        $this->_compilePath = CACHE_PATH . DS . 'views' . DS . 'widgets' . DS;
+        $this->_compilePath = CACHE_PATH . DS . 'views' . DS . 'widgets';
 
         return true;
     }
@@ -198,7 +198,7 @@ class WidgetTemplate extends Template {
      */
     protected function _getCompileFile($fileName) {
 
-        return $this->_compilePath . $fileName . '.widget.compilecache.php';
+        return $this->_compilePath . DS . $fileName . '.widget.compilecache.php';
     }
 
     /**

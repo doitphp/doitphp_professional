@@ -130,7 +130,7 @@ abstract class Extension extends Controller {
      */
     protected static function _getExtRoot($extensionName) {
 
-        return BASE_PATH . DS . 'extensions' . DS . strtolower($extensionName) . DS;
+        return BASE_PATH . DS . 'extensions' . DS . strtolower($extensionName);
     }
 
     /**
@@ -141,7 +141,7 @@ abstract class Extension extends Controller {
      */
     public function getExtRoot() {
 
-        return BASE_PATH . DS . 'extensions' . DS . $this->getExtName() . DS;
+        return BASE_PATH . DS . 'extensions' . DS . $this->getExtName();
     }
 
     /**
@@ -177,7 +177,7 @@ abstract class Extension extends Controller {
         if (!isset(self::$_extensionObjArray[$extensionName])) {
 
             //加载扩展模块的引导文件(index)
-            $extensionPath = self::_getExtRoot($extensionName) . $extensionName . '.php';
+            $extensionPath = self::_getExtRoot($extensionName) . DS . $extensionName . '.php';
             Doit::loadFile($extensionPath);
 
             self::$_extensionObjArray[$extensionName] = Doit::singleton($extensionName . 'Ext');

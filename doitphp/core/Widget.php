@@ -47,12 +47,12 @@ abstract class Widget extends Controller {
 
             //获取Widget文件目录路径
             if (!$moduleName) {
-                $widgetPath = BASE_PATH . DS . 'widgets' . DS;
+                $widgetPath = BASE_PATH . DS . 'widgets';
             } else {
-                $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets' . DS;
+                $widgetPath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
             }
 
-            $this->_viewPath = $widgetPath . 'views' . DS;
+            $this->_viewPath = $widgetPath . DS . 'views';
         }
 
         return true;
@@ -240,7 +240,7 @@ abstract class Widget extends Controller {
     protected function _parseViewFile($fileName = null) {
 
         $fileName = (!$fileName) ? $this->_getWidgetName() : $fileName;
-        $viewPath = $this->_viewPath . $fileName . VIEW_EXT;
+        $viewPath = $this->_viewPath . DS . $fileName . VIEW_EXT;
 
         //检查视图文件路径是否正确
         if (!is_file($viewPath)) {

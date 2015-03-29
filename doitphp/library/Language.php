@@ -36,7 +36,7 @@ class Language {
 
         //获取默认的语言包目录的路径
         $moduleName      = Doit::getModuleName();
-        $this->_langPath = BASE_PATH . DS . ((!$moduleName) ? 'language': 'modules' . DS . $moduleName . DS . 'language') . DS;
+        $this->_langPath = BASE_PATH . DS . ((!$moduleName) ? 'language': 'modules' . DS . $moduleName . DS . 'language');
 
         return true;
     }
@@ -89,7 +89,7 @@ class Language {
             return false;
         }
 
-        $langFilePath = $this->_langPath . $langName . '.php';
+        $langFilePath = $this->_langPath . DS . $langName . '.php';
 
         static $_langArray = array();
         if (!isset($_langArray[$langName])) {

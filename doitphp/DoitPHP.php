@@ -162,10 +162,10 @@ abstract class Doit {
             $controller = self::$_controller . 'Controller';
             $action     = self::$_action . 'Action';
 
-            $controllerHomePath = BASE_PATH . DS . ((self::$_module) ? 'modules' . DS . self::$_module . DS : '') . 'controllers' . DS;
+            $controllerHomePath = BASE_PATH . DS . ((self::$_module) ? 'modules' . DS . self::$_module . DS : '') . 'controllers';
             //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
             if (strpos($controller, '_') === false) {
-                $controllerFilePath = $controllerHomePath . self::$_controller . '.php';
+                $controllerFilePath = $controllerHomePath . DS . self::$_controller . '.php';
                 if (!is_file($controllerFilePath)) {
                     //当controller名称中不含有'_'字符时
                     self::_show404Error();
@@ -179,7 +179,7 @@ abstract class Doit {
                 $childDirName       = implode(DS, $childDirArray);
                 unset($childDirArray);
                 //重新组装Controller文件的路径
-                $controllerFilePath = $controllerHomePath . $childDirName . DS . $controllerFileName . '.php';
+                $controllerFilePath = $controllerHomePath . DS . $childDirName . DS . $controllerFileName . '.php';
                 if (!is_file($controllerFilePath)) {
                     //当文件在子目录里没有找到时
                     self::_show404Error();
@@ -293,7 +293,7 @@ abstract class Doit {
      */
     private static function _show404Error() {
 
-        $viewFilePath = BASE_PATH . DS . 'views/error/error404.html';
+        $viewFilePath = BASE_PATH . DS . 'views/errors/error404.html';
         //判断自定义404页面文件是否存在,若不存在则加载默认404页面
         is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . DS . 'views/html/error404.html');
 

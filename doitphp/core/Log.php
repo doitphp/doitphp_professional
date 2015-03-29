@@ -106,11 +106,11 @@ abstract class Log {
      *
      * @example
      *
-     * $this->__getLogFilePath('sql');
+     * $this->_getLogFilePath('sql');
      * 或
-     * $this->__getLogFilePath('2012-11.2012-11-23');
+     * $this->_getLogFilePath('2012-11.2012-11-23');
      * 或
-     * $this->__getLogFilePath('2012-11/2012-11-23');
+     * $this->_getLogFilePath('2012-11/2012-11-23');
      *
      * @access private
      *
@@ -126,14 +126,14 @@ abstract class Log {
         }
 
         //组装日志文件路径
-        $logFilePath = rtrim(Configure::get('application.logPath'), '/') . DS;
+        $logFilePath = rtrim(Configure::get('application.logPath'), '/');
         if (!$logFileName) {
-            $logFilePath .= date('Y-m') . '/' . date('Y-m-d');
+            $logFilePath .= DS . date('Y-m') . '/' . date('Y-m-d');
         } else {
             if (strpos($logFileName, '/') !== false) {
-                $logFilePath .= $logFileName;
+                $logFilePath .= DS . $logFileName;
             } else {
-                $logFilePath .= date('Y-m') . '/' . $logFileName;
+                $logFilePath .= DS . date('Y-m') . '/' . $logFileName;
             }
         }
         $logFilePath .= '.log';

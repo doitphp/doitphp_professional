@@ -105,7 +105,7 @@ class Template {
         $this->_viewPath = BASE_PATH . DS . $viewDirName;
 
         //设置视图编译缓存文件的默认目录路径
-        $this->_compilePath = CACHE_PATH . DS . 'views' . DS;
+        $this->_compilePath = CACHE_PATH . DS . 'views';
 
         return true;
     }
@@ -619,7 +619,7 @@ class Template {
      */
     protected function _getViewFile($fileName) {
 
-        return $this->_viewPath . $fileName . VIEW_EXT;
+        return $this->_viewPath . DS . $fileName . VIEW_EXT;
     }
 
     /**
@@ -633,7 +633,7 @@ class Template {
      */
     protected function _getCompileFile($fileName) {
 
-        return $this->_compilePath . $fileName . '.action.compilecache.php';
+        return $this->_compilePath . DS . $fileName . '.action.compilecache.php';
     }
 
     /**

@@ -140,9 +140,9 @@ abstract class AutoLoad {
 
         //获取Controller文件目录路径
         if (!$moduleName) {
-            $controllerHomePath = BASE_PATH . DS . 'controllers' . DS;
+            $controllerHomePath = BASE_PATH . DS . 'controllers';
         } else {
-            $controllerHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'controllers' . DS;
+            $controllerHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'controllers';
         }
 
         //分析controller名称
@@ -150,7 +150,7 @@ abstract class AutoLoad {
 
         //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
         if (strpos($controllerName, '_') === false) {
-            $controllerFilePath = $controllerHomePath . $controllerName . '.php';
+            $controllerFilePath = $controllerHomePath . DS . $controllerName . '.php';
             if (!is_file($controllerFilePath)) {
                 //当Controller文件不存在时,系统直接报错
                 Controller::halt('The Controller File: ' . $controllerFilePath .' is not found!', 'Normal');
@@ -164,7 +164,7 @@ abstract class AutoLoad {
             $childDirName       = implode(DS, $childDirArray);
             unset($childDirArray);
             //分析并获取Controller中子目录中的Controller文件径
-            $controllerFilePath = $controllerHomePath . $childDirName . DS . $controllerFileName . '.php';
+            $controllerFilePath = $controllerHomePath . DS . $childDirName . DS . $controllerFileName . '.php';
             if (!is_file($controllerFilePath)) {
                 //当文件在子目录里没有找到时
                 Controller::halt('The Controller File: ' . $controllerFilePath .' is not found!', 'Normal');
@@ -190,9 +190,9 @@ abstract class AutoLoad {
 
         //获取Model文件目录路径
         if (!$moduleName) {
-            $modelHomePath = BASE_PATH . DS . 'models' . DS;
+            $modelHomePath = BASE_PATH . DS . 'models';
         } else {
-            $modelHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'models' . DS;
+            $modelHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'models';
         }
 
         //分析Model文件的实际路径
@@ -231,14 +231,14 @@ abstract class AutoLoad {
         if ($supportModule) {
             //获取Widget文件目录路径
             if (!$moduleName) {
-                $widgetHomePath = BASE_PATH . DS . 'widgets' . DS;
+                $widgetHomePath = BASE_PATH . DS . 'widgets';
             } else {
-                $widgetHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets' . DS;
+                $widgetHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'widgets';
                 //重定义所要加载的文件是否在模块(Module)目录中
                 $isModule = true;
             }
         } else {
-            $widgetHomePath = BASE_PATH . DS . 'widgets' . DS;
+            $widgetHomePath = BASE_PATH . DS . 'widgets';
         }
 
         //分析Widget文件的实际路径
@@ -280,15 +280,15 @@ abstract class AutoLoad {
 
             //获取library文件目录路径
             if (!$moduleName) {
-                $libraryHomePath = BASE_PATH . DS . 'library' . DS;
+                $libraryHomePath = BASE_PATH . DS . 'library';
             } else {
-                $libraryHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'library' . DS;
+                $libraryHomePath = BASE_PATH . DS . 'modules' . DS . $moduleName . DS . 'library';
                 //重定义所要加载的文件是否在模块(Module)目录中
                 $isModule = true;
             }
         } else {
             //获取library文件目录路径
-            $libraryHomePath = BASE_PATH . DS . 'library' . DS;
+            $libraryHomePath = BASE_PATH . DS . 'library';
         }
 
         //分析library文件的实际路径
@@ -369,10 +369,10 @@ abstract class AutoLoad {
         if (strpos($className, '_') !== false) {
             $childDirArray = explode('_', $className);
             $classFileName = array_pop($childDirArray);
-            return $homePath . strtolower(implode(DS, $childDirArray)) . DS . $classFileName . '.php';
+            return $homePath . DS . strtolower(implode(DS, $childDirArray)) . DS . $classFileName . '.php';
         }
 
-        return $homePath . $className . '.php';
+        return $homePath . DS . $className . '.php';
     }
 
 }

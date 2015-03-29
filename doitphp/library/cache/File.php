@@ -42,7 +42,7 @@ class Cache_File {
      */
     public function __construct() {
 
-        $this->_cachePath = CACHE_PATH . DS . 'data' . DS;
+        $this->_cachePath = CACHE_PATH . DS . 'data';
 
         return true;
     }
@@ -172,7 +172,7 @@ class Cache_File {
         //删除所有的缓存文件
         foreach ($fileList as $fileName) {
             if (strpos($fileName, '.filecache.php') !== false) {
-                unlink($this->_cachePath . $fileName);
+                unlink($this->_cachePath . DS . $fileName);
             }
         }
 
@@ -190,7 +190,7 @@ class Cache_File {
      */
     protected function _parseCacheFile($key) {
 
-        return $this->_cachePath . md5($key) . '.filecache.php';
+        return $this->_cachePath . DS . md5($key) . '.filecache.php';
     }
 
     /**

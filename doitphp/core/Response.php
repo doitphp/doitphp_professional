@@ -129,7 +129,7 @@ abstract class Response {
             $message .= '<script type="text/javascript">function doit_redirect_url(url){location.href=url;}setTimeout("doit_redirect_url(\'' . $gotoUrl . '\')", ' . $limitTime . ');</script>';
         }
 
-        $messageTemplateFile = BASE_PATH . DS . 'views/error/message.php';
+        $messageTemplateFile = BASE_PATH . DS . 'views/errors/message.php';
 
         is_file($messageTemplateFile) ? include_once $messageTemplateFile : include_once DOIT_ROOT . DS . 'views/html/message.php';
 
