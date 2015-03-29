@@ -42,7 +42,7 @@ class Cache_File {
      */
     public function __construct() {
 
-        $this->_cachePath = CACHE_PATH . DS . 'data';
+        $this->_cachePath = CACHE_PATH . '/data';
 
         return true;
     }

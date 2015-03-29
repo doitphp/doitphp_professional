@@ -190,7 +190,7 @@ class Curl {
             return self::$_cookieFilePath;
         }
 
-        return CACHE_PATH . DS . 'temp/' . md5('doitphp_curl_cookie') . '.txt';
+        return CACHE_PATH . '/temp/' . md5('doitphp_curl_cookie') . '.txt';
     }
 
     /**

@@ -162,7 +162,7 @@ abstract class Doit {
             $controller = self::$_controller . 'Controller';
             $action     = self::$_action . 'Action';
 
-            $controllerHomePath = BASE_PATH . DS . ((self::$_module) ? 'modules' . DS . self::$_module . DS : '') . 'controllers';
+            $controllerHomePath = BASE_PATH . ((self::$_module) ? '/modules/' . self::$_module : '') . '/controllers';
             //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
             if (strpos($controller, '_') === false) {
                 $controllerFilePath = $controllerHomePath . DS . self::$_controller . '.php';
@@ -293,7 +293,7 @@ abstract class Doit {
      */
     private static function _show404Error() {
 
-        $viewFilePath = BASE_PATH . DS . 'views/errors/error404.html';
+        $viewFilePath = BASE_PATH . '/views/errors/error404.html';
         //判断自定义404页面文件是否存在,若不存在则加载默认404页面
         is_file($viewFilePath) ? self::loadFile($viewFilePath) : self::loadFile(DOIT_ROOT . '/views/errors/error404.html');
 
