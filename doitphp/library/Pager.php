@@ -534,10 +534,6 @@ class Pager {
                 $_styleFile = 'doitphp_pagelist_classic.min.css';
                 break;
 
-            case 'simple':
-                $_styleFile = 'doitphp_pagelist_simple.min.css';
-                break;
-
             default:
                 $_styleFile = 'doitphp_pagelist_default.min.css';
         }
@@ -564,16 +560,6 @@ class Pager {
 
             case 'classic':
                 $this->_styleFile = 'doitphp_pagelist_classic.min.css';
-                break;
-
-            case 'simple':
-                $this->_styleFile = 'doitphp_pagelist_simple.min.css';
-
-                $cssDir = Controller::getBaseUrl() . '/assets/doit/';
-                $this->firstPage  = '<img src="' . $cssDir . 'images/pre_02.gif" width="17" height="11" />';
-                $this->prePage    = '<img src="' . $cssDir . 'images/s_pre.gif" width="16" height="11" />';
-                $this->nextPage   = '<img src="' . $cssDir . 'images/s_next.gif" width="14" height="11" />';
-                $this->lastPage   = '<img src="' . $cssDir . 'images/next_02.gif" width="15" height="11" />';
                 break;
 
             default:
