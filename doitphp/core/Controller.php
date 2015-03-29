@@ -657,13 +657,13 @@ abstract class Controller {
     protected function initView() {
 
         //分析视图类文件路径
-        $filePath = DOIT_ROOT . DS . 'core' . DS . ((VIEW_EXT == Configure::PHP_VIEW_EXT) ? 'View.php' : 'Template.php');
+        $filePath = DOIT_ROOT . DS . 'core' . DS . ((VIEW_EXT == Configure::VIEW_EXT_PHP) ? 'View.php' : 'Template.php');
 
         //加载视图处理类文件
         Doit::loadFile($filePath);
 
         //返回视图实例化对象
-        return (VIEW_EXT == Configure::PHP_VIEW_EXT) ? View::getInstance() : Template::getInstance();
+        return (VIEW_EXT == Configure::VIEW_EXT_PHP) ? View::getInstance() : Template::getInstance();
     }
 
     /**

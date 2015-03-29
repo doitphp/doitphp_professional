@@ -30,8 +30,8 @@ abstract class Configure {
      *
      * @var string
      */
-    const HTML_VIEW_EXT = '.html';
-    const PHP_VIEW_EXT  = '.php';
+    const VIEW_EXT_HTML = '.html';
+    const VIEW_EXT_PHP  = '.php';
 
     /**
      * 项目配置文件内容临时存贮数组
@@ -255,7 +255,7 @@ abstract class Configure {
         $defaultConfig['defaultTimeZone']     = 'Asia/ShangHai';
 
         //设置视图文件的格式(php或html, 默认为php)
-        $defaultConfig['viewExt']             = self::PHP_VIEW_EXT;
+        $defaultConfig['viewExt']             = self::VIEW_EXT_PHP;
 
         return $defaultConfig;
     }

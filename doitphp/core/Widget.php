@@ -40,7 +40,7 @@ abstract class Widget extends Controller {
     protected function init() {
 
         //获取当前视图的目录(当视图文件的格式为PHP时)
-        if (VIEW_EXT == Configure::PHP_VIEW_EXT) {
+        if (VIEW_EXT == Configure::VIEW_EXT_PHP) {
 
             //获取当前的模块名称
             $moduleName = Doit::getModuleName();
@@ -69,7 +69,7 @@ abstract class Widget extends Controller {
     protected function initView() {
 
         //当视图文件格式为PHP时，采用Widget自身的视图机制。即：非View Class的视图机制
-        if (VIEW_EXT == Configure::PHP_VIEW_EXT) {
+        if (VIEW_EXT == Configure::VIEW_EXT_PHP) {
             return null;
         }
 
@@ -133,7 +133,7 @@ abstract class Widget extends Controller {
     public function display($fileName = null) {
 
         //当视图格式为HTML时
-        if (VIEW_EXT == Configure::HTML_VIEW_EXT) {
+        if (VIEW_EXT == Configure::VIEW_EXT_HTML) {
             return self::$_viewObject->display($fileName);
         }
 
@@ -290,7 +290,7 @@ abstract class Widget extends Controller {
      */
     public static function getView() {
 
-        if (VIEW_EXT == Configure::PHP_VIEW_EXT) {
+        if (VIEW_EXT == Configure::VIEW_EXT_PHP) {
             return $this;
         }
 
