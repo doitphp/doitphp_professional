@@ -49,10 +49,6 @@ class Cache {
                 break;
 
             case 'File':
-            case 'Apc':
-            case 'Xcache':
-            case 'Wincache':
-            case 'Eaccelerator':
                 $object = Doit::singleton('Cache_' . $adapter);
                 break;
         }
