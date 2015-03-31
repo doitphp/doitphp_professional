@@ -39,7 +39,7 @@ abstract class AutoLoad {
     'Cookie'            => 'library/Cookie.php',
     'Session'           => 'library/Session.php',
     'Image'             => 'library/Image.php',
-    'PinCode'           => 'library/PinCode.php',
+    'Captcha'           => 'library/Captcha.php',
     'Curl'              => 'library/Curl.php',
     'Client'            => 'library/Client.php',
     'Check'             => 'library/Check.php',

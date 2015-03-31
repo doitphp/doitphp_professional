@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2010 Tommycode Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: PinCode.php 2.0 2012-12-23 11:36:01Z tommy $
+ * @version $Id: Captcha.php 2.0 2015-4-1 1:36:01Z tommy $
  * @package library
  * @since 1.0
  */
@@ -17,7 +17,7 @@ if (!defined('IN_DOIT')) {
     exit();
 }
 
-class PinCode {
+class Captcha {
 
     /**
      * 验证码图片的背景图片.
@@ -107,7 +107,7 @@ class PinCode {
 
         $this->_fontSize     = 14;
         $this->_fontName     = DOIT_ROOT . '/views/source/aispec.ttf';
-        $this->_sessionName  = 'doitphp_pincode_session_id';
+        $this->_sessionName  = 'doitphp_captcha_session_id';
         $this->_width        = 90;
         $this->_height       = 30;
 
@@ -288,7 +288,7 @@ class PinCode {
      * @access protected
      * @return stirng
      */
-    protected function getPincodeContent() {
+    protected function getCaptchaContent() {
 
         if (!$this->_textContent) {
             $char = 'BCEFGHJKMPQRTVWXY2346789';
@@ -399,7 +399,7 @@ class PinCode {
         }
 
         //获取验证码内容.
-        $this->getPincodeContent();
+        $this->getCaptchaContent();
 
         //验证码中含有汉字
         if (!preg_match('~[\x{4e00}-\x{9fa5}]+~u', $this->_textContent)) {
