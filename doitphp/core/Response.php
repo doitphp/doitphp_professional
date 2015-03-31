@@ -103,11 +103,11 @@ abstract class Response {
      *
      * @param string $message 所要显示的提示信息
      * @param string $gotoUrl 所要跳转的自定义网址
-     * @param integer $limitTime 显示信息的有效期,注:(单位:秒) 默认为5秒
+     * @param integer $limitTime 显示信息的有效期,注:(单位:秒) 默认为3秒
      *
      * @return string
      */
-    public static function showMsg($message, $gotoUrl = null, $limitTime = 5) {
+    public static function showMsg($message, $gotoUrl = null, $limitTime = 3) {
 
         //参数分析
         if (!$message) {
@@ -126,7 +126,7 @@ abstract class Response {
                 $gotoUrl  = str_replace(array("\n","\r"), '', $gotoUrl);
                 $message .= '<br/><a href="' . $gotoUrl . '" target="_self">如果你的浏览器没反应,请点击这里...</a>';
             }
-            $message .= '<script type="text/javascript">function doit_redirect_url(url){location.href=url;}setTimeout("doit_redirect_url(\'' . $gotoUrl . '\')", ' . $limitTime . ');</script>';
+            $message .= '<script type="text/javascript">function doitRedirectUrl(url){location.href=url;}setTimeout("doitRedirectUrl(\'' . $gotoUrl . '\')", ' . $limitTime . ');</script>';
         }
 
         $messageTemplateFile = BASE_PATH . '/views/errors/message.php';
