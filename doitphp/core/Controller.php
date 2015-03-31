@@ -444,36 +444,20 @@ abstract class Controller {
      * 例二：
      * $this->import(BASE_PATH . '/extensions/editer/fck.php');
      *
-     * 例三：加载本模块(Module)中的文件
-     * $this->import('#_SELF_PATH/phpexcel/phpexcel.php');
-     *
-     * 例四：在模块(Module)的Controller代码中加载application的library目录里的文件:snoopy.php
+     * 例三：在模块(Module)的Controller代码中加载application的library目录里的文件:snoopy.php
      * $this->import('snoopy.php', false);
      *
      * @access public
      *
      * @param string $fileName 所要加载的文件。注：默认目录为application的子目录：library
-     * @param boolean $supportModule 是否支持模块(Module)文件的加载 (true:支持/false:不支持)
      *
      * @return void
      */
-    public static function import($fileName, $supportModule = false) {
+    public static function import($fileName) {
 
         //参数分析
         if (!$fileName) {
             return false;
-        }
-
-        //替换当前的模块(Module)根目录的路径
-        if ($supportModule) {
-            $moduleName = Doit::getModuleName();
-            //当调用本函数(类方法)的代码为模块(Module)文件时
-            if ($moduleName) {
-                $modulePath = BASE_PATH . '/modules/' . $moduleName . DS;
-                $fileName = str_replace('#_SELF_PATH', $modulePath, $fileName);
-            } else {
-                $fileName = str_replace('#_SELF_PATH', '', $fileName);
-            }
         }
 
         //统一路径分隔符
@@ -484,14 +468,9 @@ abstract class Controller {
             //分析获取文件的路径
             $filePath = realpath($fileName);
         } else {
-            //当支持模块开关开启时
-            if (!$supportModule) {
-                //分析获取文件的路径
-                $filePath = realpath(BASE_PATH . '/library/' . $fileName);
-            } else {
-                //分析获取文件的路径
-                $filePath   = (!$moduleName) ? realpath(BASE_PATH . '/library/' . $fileName) : realpath($modulePath . $fileName);
-            }
+            $moduleName = Doit::getModuleName();
+            //分析获取文件的路径
+            $filePath   = realpath(BASE_PATH . ((!$moduleName) ? '' : '/modules/' . $moduleName) . '/library/' . $fileName);
         }
 
         return Doit::loadFile($filePath);
