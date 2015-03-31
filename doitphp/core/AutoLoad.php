@@ -52,7 +52,6 @@ abstract class AutoLoad {
     'Text'              => 'library/Text.php',
     'Encrypt'           => 'library/Encrypt.php',
     'Tree'              => 'library/Tree.php',
-    'Player'            => 'library/Player.php',
     'Zip'               => 'library/Zip.php',
     'MongoDb'           => 'library/MongoDb.php',
     'Language'          => 'library/Language.php',
@@ -70,7 +69,6 @@ abstract class AutoLoad {
     'Benchmark'         => 'library/Benchmark.php',
     'HttpResponse'      => 'library/HttpResponse.php',
     'Ftp'               => 'library/Ftp.php',
-    'Wsdl'              => 'library/Wsdl.php',
     );
 
     /**
