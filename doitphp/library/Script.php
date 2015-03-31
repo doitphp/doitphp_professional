@@ -271,9 +271,6 @@ class Script {
             case 'big':
                 $imageName = 'ajax_loading_big.gif';
                 break;
-            case 'bar':
-                $imageName = 'ajax_loading_bar.gif';
-                break;
             case 'snake':
                 $imageName = 'ajax_loading_snake.gif';
                 break;
