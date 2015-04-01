@@ -6,7 +6,7 @@
  * @copyright  Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: Pager.php 2.0 2012-12-29 11:40:01Z tommy $
+ * @version $Id: Pagination.php 2.0 2012-12-29 11:40:01Z tommy $
  * @package library
  * @since 1.0
  */
@@ -15,7 +15,7 @@ if (!defined('IN_DOIT')) {
     exit();
 }
 
-class Pager {
+class Pagination {
 
     /**
      * 连接网址
@@ -518,7 +518,7 @@ class Pager {
     /**
      * 视图中加载pager的CSS文件
      *
-     * 注：本方法虽与loadCss()功能一样，不过本方法是供在视图中使用的，主要用在ajax分页时。如：Pager::loadCssFile();
+     * 注：本方法虽与loadCss()功能一样，不过本方法是供在视图中使用的，主要用在ajax分页时。如：Pagination::loadCssFile();
      *
      * @access public
      *
