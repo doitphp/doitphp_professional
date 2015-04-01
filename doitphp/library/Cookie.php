@@ -22,11 +22,32 @@ class Cookie {
      *
      * @var array
      */
-    protected static $_defaultConfig = array(
-        'expire' => 3600,
-        'path'   => '/',
-        'domain' => null,
+    protected $_defaultOptions = array(
+        'expire'    => 3600,
+        'path'      => '/',
+        'domain'    => null,
     );
+
+    /**
+     * Cookie的存贮设置选项
+     *
+     * @var array
+     */
+    protected $_options = null;
+
+    /**
+     * 构造函数
+     *
+     * @access public
+     * @return boolean
+     */
+    public function __construct() {
+        $options = Configure::get('cookie');
+        $this->_options = ($options && is_array($options)) ? $options : array();
+        $this->_options += $this->_defaultOptions;
+
+        return true;
+    }
 
     /**
      * 获取某cookie变量的值
@@ -38,7 +59,7 @@ class Cookie {
      *
      * @return mixed
      */
-    public static function get($cookieName, $default = null) {
+    public function get($cookieName, $default = null) {
 
         //参数分析
         if (!$cookieName) {
@@ -46,6 +67,11 @@ class Cookie {
         }
         if (!isset($_COOKIE[$cookieName])) {
             return $default;
+        }
+
+        if ($this->_options['secretkey']) {
+            $value = Doit::singleton('Encrypt')->decode($_COOKIE[$cookieName], $this->_options['secretkey']);
+            return unserialize($value);
         }
 
         return unserialize(base64_decode($_COOKIE[$cookieName]));
@@ -56,7 +82,7 @@ class Cookie {
      *
      * @access public
      *
-     * @param string $name cookie的变量名
+     * @param string $cookieName cookie的变量名
      * @param mixed $value cookie值
      * @param integer $expire cookie的生存周期
      * @param string $path cookie所存放的目录
@@ -64,32 +90,26 @@ class Cookie {
      *
      * @return boolean
      */
-    public static function set($name, $value, $expire = null, $path = null, $domain = null) {
+    public function set($cookieName, $value, $expire = null, $path = null, $domain = null) {
 
         //参数分析
-        if (!$name) {
+        if (!$cookieName) {
             return false;
         }
 
-        //获取cookie的配置信息
-        if (is_null($expire)) {
-            $configExpire = Configure::get('cookie.expire');
-            $expire       = (!$configExpire) ? self::$_defaultConfig['expire'] : $configExpire;
-        }
-        if (is_null($path)) {
-            $configPath = Configure::get('cookie.path');
-            $path       = (!$configPath) ? self::$_defaultConfig['path'] : rtrim($configPath, '/') . '/';
-        }
-        if (is_null($domain)) {
-            $configDomain = Configure::get('cookie.domain');
-            $domain       = (!$configDomain) ? self::$_defaultConfig['domain'] : $configDomain;
+        $expire = is_null($expire) ? $this->_options['expire'] : $expire;
+        $path   = is_null($path) ? $this->_options['path'] : $path;
+        $domain = is_null($domain) ? $this->_options['domain'] : $domain;
+
+        $expire = $_SERVER['REQUEST_TIME'] + $this->_options['expire'];
+        if ($this->_options['secretkey']) {
+            $value = Doit::singleton('Encrypt')->encode(serialize($value), $this->_options['secretkey']);
+        } else {
+            $value = base64_encode(serialize($value));
         }
 
-        $expire = $_SERVER['REQUEST_TIME'] + $expire;
-        $value  = base64_encode(serialize($value));
-
-        setcookie($name, $value, $expire, $path, $domain);
-        $_COOKIE[$name] = $value;
+        setcookie($cookieName, $value, $expire, $path, $domain);
+        $_COOKIE[$cookieName] = $value;
 
         return true;
     }
@@ -103,7 +123,7 @@ class Cookie {
      *
      * @return boolean
      */
-    public static function delete($name) {
+    public function delete($name) {
 
         //参数分析
         if (!$name) {
@@ -122,7 +142,7 @@ class Cookie {
      * @access public
      * @return boolean
      */
-    public static function clear() {
+    public function clear() {
 
         if (isset($_COOKIE)) {
             unset($_COOKIE);
