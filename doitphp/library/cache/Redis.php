@@ -39,6 +39,7 @@ class Cache_Redis {
     protected $_defaultOptions = array(
         'host'       => '127.0.0.1',
         'port'       => '6379',
+        'password'   => null,
         'database'   => 0,
         'persistent' => false,
         'expire'     => 900,
@@ -70,17 +71,13 @@ class Cache_Redis {
         $options += $this->_defaultOptions;
         //连接数据库
         $this->_Redis  = new Redis();
-        if (!$options['persistent']) {
-            $return = $this->_Redis->connect($options['host'], $options['port'], $options['expire']);;
-        } else {
-            $persistentId = $options['port'] . $options['expire'] . $options['database'];
-            $return = $this->_Redis->pconnect($options['host'], $options['port'], $options['expire'], $persistentId);
-        }
+        $connect = (!$options['persistent']) ? 'connect' : 'pconnect';
+        $return = $this->_Redis->$connect($options['host'], $options['port'], $options['expire']);
 
         if ($return && $options['password']) {
             $return = $this->_Redis->auth($options['password']);
         }
-        if ($return) {
+        if ($return && $options['database']) {
             $return = $this->_Redis->select($options['database']);
         }
 
