@@ -720,7 +720,7 @@ abstract class Controller {
                 return $this->getView();
 
             case 'pager':
-                return $this->instance('Pager');
+                return $this->instance('Pagination');
 
             case 'image':
                 return $this->instance('Image');

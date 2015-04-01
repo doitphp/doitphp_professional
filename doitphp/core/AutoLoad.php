@@ -32,7 +32,7 @@ abstract class AutoLoad {
     'Template'          => 'core/Template.php',
     'WidgetTemplate'    => 'core/WidgetTemplate.php',
     'Extension'         => 'core/Extension.php',
-    'Pager'             => 'library/Pager.php',
+    'Pagination'        => 'library/Pagination.php',
     'Script'            => 'library/Script.php',
     'File'              => 'library/File.php',
     'Html'              => 'library/Html.php',
