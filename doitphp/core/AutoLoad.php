@@ -56,6 +56,7 @@ abstract class AutoLoad {
     'MongoDb'           => 'library/MongoDb.php',
     'Language'          => 'library/Language.php',
     'Cart'              => 'library/Cart.php',
+    'Cache_Memcached'   => 'library/cache/Memcached.php',
     'Cache_Memcache'    => 'library/cache/Memcache.php',
     'Cache_Redis'       => 'library/cache/Redis.php',
     'Cache_File'        => 'library/cache/File.php',
