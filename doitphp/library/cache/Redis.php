@@ -208,17 +208,18 @@ class Cache_Redis {
      * @access public
      *
      * @param string $key 数据key
+     * @param integer $value 自增数据值
      *
      * @return boolean
      */
-    public function add($key) {
+    public function increment($key, $value = 1) {
 
         //参数分析
         if (!$key) {
             return false;
         }
 
-        return $this->_Redis->incr($key);
+        return $this->_Redis->incrBy($key, $value);
     }
 
     /**
@@ -227,17 +228,18 @@ class Cache_Redis {
      * @access public
      *
      * @param string $key 数据key
+     * @param integer $value 自减数据值
      *
      * @return boolean
      */
-    public function decr($key) {
+    public function decrement($key, $value = 1) {
 
         //参数分析
         if (!$key) {
             return false;
         }
 
-        return $this->_Redis->decr($key);
+        return $this->_Redis->decrBy($key, $value);
     }
 
     /**

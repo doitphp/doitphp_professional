@@ -214,7 +214,7 @@ class Cache_Memcache {
      *
      * @author ColaPHP
      * @param string $key 数据key
-     * @param integer $value 数据值
+     * @param integer $value 自增数据值
      *
      * @return boolean
      */
@@ -234,7 +234,7 @@ class Cache_Memcache {
      * @access public
      *
      * @param string $key 数据key
-     * @param integer $value 数据值
+     * @param integer $value 自减数据值
      *
      * @return boolean
      */
