@@ -271,17 +271,6 @@ class Cache_Memcache {
     }
 
      /**
-      * 获取memcache server状态
-      *
-      * @access public
-      * @return string
-      */
-    public function stats() {
-
-        return $this->_Memcache->getStats();
-     }
-
-     /**
       * 析构函数
       *
       * @access public

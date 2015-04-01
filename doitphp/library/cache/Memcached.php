@@ -133,7 +133,7 @@ class Cache_Memcachedd {
             $this->_defaultOptions['servers'][] = $this->_defaultServer;
         }
 
-        $this->_Memcached = new Memcache();
+        $this->_Memcached = new Memcached();
 
         foreach ($this->_defaultOptions['servers'] as $server) {
             $server += array('host' => '127.0.0.1', 'port' => 11211, 'persistent' => true);
@@ -267,17 +267,6 @@ class Cache_Memcachedd {
 
         return $this->_Memcached;
     }
-
-     /**
-      * 获取memcached server状态
-      *
-      * @access public
-      * @return string
-      */
-    public function stats() {
-
-        return $this->_Memcached->getStats();
-     }
 
      /**
       * 析构函数
