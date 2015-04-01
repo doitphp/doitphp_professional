@@ -65,11 +65,11 @@ class Cache_File {
             return false;
         }
         if(is_null($expire)){
-            $expire = time() + $this->_defaultOptions['expire'];
+            $expire = $_SERVER['REQUEST_TIME'] + $this->_defaultOptions['expire'];
         }else if ($expire === 0) {
             $expire = 0;
         }else{
-            $expire += time();
+            $expire += $_SERVER['REQUEST_TIME'];
         }
 
         //分析缓存文件
@@ -107,7 +107,7 @@ class Cache_File {
         $data = include $filePath;
 
         //当缓存文件非永久且过期时
-        if ($data[0] && time() > $data[0]) {
+        if ($data[0] && $_SERVER['REQUEST_TIME'] > $data[0]) {
             unlink($filePath);
             return false;
         }

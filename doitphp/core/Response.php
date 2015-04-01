@@ -59,7 +59,7 @@ abstract class Response {
      */
     public static function expires($seconds = 1800) {
 
-        $time = date('D, d M Y H:i:s', time() + $seconds) . ' GMT';
+        $time = date('D, d M Y H:i:s', $_SERVER['REQUEST_TIME'] + $seconds) . ' GMT';
         header("Expires: {$time}");
 
         return true;

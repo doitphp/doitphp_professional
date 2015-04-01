@@ -150,7 +150,7 @@ class Template {
 
         //获取视图缓存文件
         $cacheFile = $this->_parseCacheFile($cacheId);
-        if (is_file($cacheFile) && (filemtime($cacheFile) + $expire >= time())) {
+        if (is_file($cacheFile) && (filemtime($cacheFile) + $expire >= $_SERVER['REQUEST_TIME'])) {
             include $cacheFile;
             exit();
         }

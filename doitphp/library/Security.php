@@ -131,7 +131,7 @@ class Security {
         //设置token生存周期及附加加密码
         $expire = (!$expire) ? self::$_expire : $expire;
         $key    = (!$key) ? self::$_key : $key;
-        $per    = ceil(time() / $expire);
+        $per    = ceil($_SERVER['REQUEST_TIME'] / $expire);
 
         return hash_hmac('md5', $per . $string, $key);
     }
@@ -158,7 +158,7 @@ class Security {
         //设置token生存周期及附加加密码
         $expire = (!$expire) ? self::$_expire : $expire;
         $key    = (!$key) ? self::$_key : $key;
-        $per    = ceil(time() / $expire);
+        $per    = ceil($_SERVER['REQUEST_TIME'] / $expire);
 
         //获取token值
         $sourceToken = hash_hmac('md5', $per . $string, $key);

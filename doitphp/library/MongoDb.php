@@ -231,7 +231,7 @@ class MongoDb {
     public static function Timestamp($sec = null, $inc = 0)
     {
         if (!$sec) {
-            $sec = time();
+            $sec = $_SERVER['REQUEST_TIME'];
         }
 
         return new MongoTimestamp($sec, $inc);

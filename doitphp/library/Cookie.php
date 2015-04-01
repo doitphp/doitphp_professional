@@ -81,7 +81,7 @@ class Cookie {
             $configDomain = Configure::get('cookie.domain');
             $domain       = (!$configDomain) ? self::$_defaultConfig['domain'] : $configDomain;
         }
-        $expire = time() + $expire;
+        $expire = $_SERVER['REQUEST_TIME'] + $expire;
 
         setcookie($name, $value, $expire, $path, $domain);
         $_COOKIE[$name] = $value;
