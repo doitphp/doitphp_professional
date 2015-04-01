@@ -246,36 +246,6 @@ class Cache_Redis {
     }
 
     /**
-     * 删除指定的缓存
-     *
-     * @access public
-     *
-     * @param string $key 所要删除数据的Key
-     *
-     * @return boolean
-     */
-    public function delete($key) {
-
-    	//参数分析
-    	if (!$key) {
-    		return false;
-    	}
-
-    	return $this->_Redis->delete($key);
-    }
-
-    /**
-     * 清除所有的缓存数据
-     *
-     * @access public
-     * @return boolean
-     */
-    public function clear() {
-
-    	return $this->_Redis->flushAll();
-    }
-
-    /**
      * key是否存在，存在返回ture
      *
      * @access public
