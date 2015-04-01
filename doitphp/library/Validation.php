@@ -8,7 +8,7 @@
  * @copyright  Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
- * @version $Id: Check.php 2.0 2012-12-22 23:50:01Z tommy $
+ * @version $Id: Validation.php 2.0 2012-12-22 23:50:01Z tommy $
  * @package library
  * @since 1.0
  */
@@ -17,7 +17,7 @@ if (!defined('IN_DOIT')) {
     exit();
 }
 
-class Check {
+class Validation {
 
     /**
      * 正则表达式验证email格式
