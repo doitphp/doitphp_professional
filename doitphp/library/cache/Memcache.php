@@ -56,7 +56,7 @@ class Cache_Memcache {
      *
      * @var objeact
      */
-    private $_dbLink;
+    private $_Memcache;
 
     /**
      * 默认的缓存服务器
@@ -135,11 +135,11 @@ class Cache_Memcache {
             $this->_defaultOptions['servers'][] = $this->_defaultServer;
         }
 
-        $this->_dbLink = new Memcache();
+        $this->_Memcache = new Memcache();
 
         foreach ($this->_defaultOptions['servers'] as $server) {
             $server += array('host' => '127.0.0.1', 'port' => 11211, 'persistent' => true);
-            $this->_dbLink->addServer($server['host'], $server['port'], $this->_defaultOptions['persistent']);
+            $this->_Memcache->addServer($server['host'], $server['port'], $this->_defaultOptions['persistent']);
         }
 
         return true;
@@ -166,7 +166,7 @@ class Cache_Memcache {
             $expire = $this->_defaultOptions['expire'];
         }
 
-        return $this->_dbLink->set($key, $data, (!$this->_defaultOptions['compressed']) ? 0 : MEMCACHE_COMPRESSED, $expire);
+        return $this->_Memcache->set($key, $data, (!$this->_defaultOptions['compressed']) ? 0 : MEMCACHE_COMPRESSED, $expire);
     }
 
     /**
@@ -185,7 +185,7 @@ class Cache_Memcache {
             return false;
         }
 
-        return $this->_dbLink->get($key);
+        return $this->_Memcache->get($key);
     }
 
     /**
@@ -204,11 +204,11 @@ class Cache_Memcache {
             return false;
         }
 
-        return $this->_dbLink->delete($key);
+        return $this->_Memcache->delete($key);
     }
 
     /**
-     * 添加一条数据
+     * 数据自增
      *
      * @access public
      *
@@ -218,14 +218,14 @@ class Cache_Memcache {
      *
      * @return boolean
      */
-    public function add($key, $value = 1) {
+    public function increment($key, $value = 1) {
 
         //参数分析
         if (!$key) {
             return false;
         }
 
-        return $this->_dbLink->increment($key, $value);
+        return $this->_Memcache->increment($key, $value);
     }
 
     /**
@@ -238,14 +238,14 @@ class Cache_Memcache {
      *
      * @return boolean
      */
-    public function decr($key, $value = 1) {
+    public function decrement($key, $value = 1) {
 
         //参数分析
         if (!$key) {
             return false;
         }
 
-        return $this->_dbLink->decrement($key, $value);
+        return $this->_Memcache->decrement($key, $value);
     }
 
     /**
@@ -256,7 +256,7 @@ class Cache_Memcache {
      */
      public function clear() {
 
-          return $this->_dbLink->flush();
+          return $this->_Memcache->flush();
      }
 
     /**
@@ -267,7 +267,7 @@ class Cache_Memcache {
      */
     public function getConnection() {
 
-        return $this->_dbLink;
+        return $this->_Memcache;
     }
 
      /**
@@ -278,7 +278,7 @@ class Cache_Memcache {
       */
     public function stats() {
 
-        return $this->_dbLink->getStats();
+        return $this->_Memcache->getStats();
      }
 
      /**
@@ -289,8 +289,8 @@ class Cache_Memcache {
       */
      public function __destruct() {
 
-         if ($this->_dbLink) {
-             $this->_dbLink->close();
+         if ($this->_Memcache) {
+             $this->_Memcache->close();
          }
 
          return true;

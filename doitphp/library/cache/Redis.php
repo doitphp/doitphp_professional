@@ -29,7 +29,7 @@ class Cache_Redis {
      *
      * @var object
      */
-    protected $_dbLink;
+    protected $_Redis;
 
     /**
      * 数据库连接参数默认值
@@ -74,8 +74,8 @@ class Cache_Redis {
         $options += $this->_defaultServer;
 
         //连接数据库
-        $this->_dbLink  = new Redis();
-        $this->_dbLink->connect($options['host'], $options['port']);
+        $this->_Redis  = new Redis();
+        $this->_Redis->connect($options['host'], $options['port']);
 
         return true;
     }
@@ -99,11 +99,11 @@ class Cache_Redis {
         }
 
         $value  = json_encode($value);
-        $result = $this->_dbLink->set($key, $value);
+        $result = $this->_Redis->set($key, $value);
 
         $expire = is_null($expire) ? $this->_defaultOptions['expire'] : $expire;
         if ($expire > 0) {
-            $this->_dbLink->setTimeout($key, $expire);
+            $this->_Redis->setTimeout($key, $expire);
         }
 
         return $result;
@@ -125,7 +125,7 @@ class Cache_Redis {
             return false;
         }
 
-        $value = $this->_dbLink->get($key);
+        $value = $this->_Redis->get($key);
         return json_decode($value, true);
     }
 
@@ -145,7 +145,7 @@ class Cache_Redis {
             return false;
         }
 
-        return $this->_dbLink->delete($key);
+        return $this->_Redis->delete($key);
     }
 
     /**
@@ -156,7 +156,7 @@ class Cache_Redis {
      */
     public function clear() {
 
-        return $this->_dbLink->flushAll();
+        return $this->_Redis->flushAll();
     }
 
     /**
@@ -178,7 +178,7 @@ class Cache_Redis {
         }
 
         $value = json_encode($value);
-        return ($right == true) ? $this->_dbLink->rPush($key, $value) : $this->_dbLink->lPush($key, $value);
+        return ($right == true) ? $this->_Redis->rPush($key, $value) : $this->_Redis->lPush($key, $value);
     }
 
     /**
@@ -198,7 +198,7 @@ class Cache_Redis {
             return false;
         }
 
-        $value = ($left == true) ? $this->_dbLink->lPop($key) : $this->_dbLink->rPop($key);
+        $value = ($left == true) ? $this->_Redis->lPop($key) : $this->_Redis->rPop($key);
         return json_decode($value);
     }
 
@@ -218,7 +218,7 @@ class Cache_Redis {
             return false;
         }
 
-        return $this->_dbLink->incr($key);
+        return $this->_Redis->incr($key);
     }
 
     /**
@@ -237,7 +237,7 @@ class Cache_Redis {
             return false;
         }
 
-        return $this->_dbLink->decr($key);
+        return $this->_Redis->decr($key);
     }
 
     /**
@@ -256,7 +256,7 @@ class Cache_Redis {
             return false;
         }
 
-        return $this->_dbLink->exists($key);
+        return $this->_Redis->exists($key);
     }
 
     /**
@@ -267,7 +267,7 @@ class Cache_Redis {
      */
     public function getConnection() {
 
-        return $this->_dbLink;
+        return $this->_Redis;
     }
 
     /**
