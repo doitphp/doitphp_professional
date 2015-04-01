@@ -24,8 +24,8 @@ class Cookie {
      */
     protected static $_defaultConfig = array(
         'expire' => 3600,
-        'path' => '/',
-        'domain' => null
+        'path'   => '/',
+        'domain' => null,
     );
 
     /**
@@ -38,14 +38,17 @@ class Cookie {
      *
      * @return mixed
      */
-    public static function get($cookieName = null, $default = null) {
+    public static function get($cookieName, $default = null) {
 
         //参数分析
         if (!$cookieName) {
-            return isset($_COOKIE) ? $_COOKIE : null;
+            return null;
+        }
+        if (!isset($_COOKIE[$cookieName])) {
+            return $default;
         }
 
-        return isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : $default;
+        return unserialize(base64_decode($_COOKIE[$cookieName]));
     }
 
     /**
@@ -81,7 +84,9 @@ class Cookie {
             $configDomain = Configure::get('cookie.domain');
             $domain       = (!$configDomain) ? self::$_defaultConfig['domain'] : $configDomain;
         }
+
         $expire = $_SERVER['REQUEST_TIME'] + $expire;
+        $value  = base64_encode(serialize($value));
 
         setcookie($name, $value, $expire, $path, $domain);
         $_COOKIE[$name] = $value;
