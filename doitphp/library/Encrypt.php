@@ -87,30 +87,30 @@ class Encrypt {
      *
      * @access public
      *
-     * @param string $str 待加密的字符串
+     * @param string $string 待加密的字符串
      * @param string $key 密钥
      *
      * @return string
      */
-    public function encode($str, $key = null) {
+    public function encode($string, $key = null) {
 
         if (is_null($key)) {
             $key = self::$_key;
         }
 
         if ($this->_config['xor']) {
-            $str = $this->_xorEncode($str, $key);
+            $string = $this->_xorEncode($string, $key);
         }
 
         if ($this->_config['mcrypt']) {
-            $str = $this->_mcryptEncode($str, $key);
+            $string = $this->_mcryptEncode($string, $key);
         }
 
         if ($this->_config['noise']) {
-            $str = $this->_noise($str, $key);
+            $string = $this->_noise($string, $key);
         }
 
-        return base64_encode($str);
+        return base64_encode($string);
     }
 
     /**
@@ -118,36 +118,36 @@ class Encrypt {
      *
      * @access public
      *
-     * @param string $str 待解密的字符串
+     * @param string $string 待解密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    public function decode($str, $key = null) {
+    public function decode($string, $key = null) {
 
         if (is_null($key)) {
             $key = self::$_key;
         }
 
-        if (preg_match('/[^a-zA-Z0-9\/\+=]/', $str)) {
+        if (preg_match('/[^a-zA-Z0-9\/\+=]/', $string)) {
             return false;
         }
 
-        $str = base64_decode($str);
+        $string = base64_decode($string);
 
         if ($this->_config['noise']) {
-            $str = $this->_denoise($str, $key);
+            $string = $this->_denoise($string, $key);
         }
 
         if ($this->_config['mcrypt']) {
-            $str = $this->_mcryptDecode($str, $key);
+            $string = $this->_mcryptDecode($string, $key);
         }
 
         if ($this->_config['xor']) {
-            $str = $this->_xorDecode($str, $key);
+            $string = $this->_xorDecode($string, $key);
         }
 
-        return $str;
+        return $string;
     }
 
     /**
@@ -155,19 +155,19 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待加密的字符串
+     * @param string $string 待加密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _mcryptEncode($str, $key) {
+    protected function _mcryptEncode($string, $key) {
 
         $cipher = $this->_config['cipher'];
         $mode   = $this->_config['mode'];
         $size   = mcrypt_get_iv_size($cipher, $mode);
         $vect   = mcrypt_create_iv($size, MCRYPT_RAND);
 
-        return mcrypt_encrypt($cipher, $key, $str, $mode, $vect);
+        return mcrypt_encrypt($cipher, $key, $string, $mode, $vect);
     }
 
     /**
@@ -175,19 +175,19 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待解密的字符串
+     * @param string $string 待解密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _mcryptDecode($str, $key) {
+    protected function _mcryptDecode($string, $key) {
 
         $cipher = $this->_config['cipher'];
         $mode   = $this->_config['mode'];
         $size   = mcrypt_get_iv_size($cipher, $mode);
         $vect   = mcrypt_create_iv($size, MCRYPT_RAND);
 
-        return rtrim(mcrypt_decrypt($cipher, $key, $str, $mode, $vect), "\0");
+        return rtrim(mcrypt_decrypt($cipher, $key, $string, $mode, $vect), "\0");
     }
 
     /**
@@ -195,18 +195,18 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待加密的字符串
+     * @param string $string 待加密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _xorEncode($str, $key) {
+    protected function _xorEncode($string, $key) {
 
         $rand = $this->_config['hash'](rand());
         $code = '';
-        for ($i = 0; $i < strlen($str); $i++) {
+        for ($i = 0; $i < strlen($string); $i++) {
             $r     = substr($rand, ($i % strlen($rand)), 1);
-            $code .= $r . ($r ^ substr($str, $i, 1));
+            $code .= $r . ($r ^ substr($string, $i, 1));
         }
 
         return $this->_xor($code, $key);
@@ -217,17 +217,17 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待解密的字符串
+     * @param string $string 待解密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _xorDecode($str, $key) {
+    protected function _xorDecode($string, $key) {
 
-        $str = $this->_xor($str, $key);
-        $code = '';
-        for ($i = 0; $i < strlen($str); $i++) {
-            $code .= (substr($str, $i++, 1) ^ substr($str, $i, 1));
+        $string = $this->_xor($string, $key);
+        $code   = '';
+        for ($i = 0; $i < strlen($string); $i++) {
+            $code .= (substr($string, $i++, 1) ^ substr($string, $i, 1));
         }
 
         return $code;
@@ -238,17 +238,17 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待加密的字符串
+     * @param string $string 待加密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _xor($str, $key) {
+    protected function _xor($string, $key) {
 
         $hash = $this->_config['hash']($key);
         $code = '';
-        for ($i = 0; $i < strlen($str); $i++) {
-            $code .= substr($str, $i, 1) ^ substr($hash, ($i % strlen($hash)), 1);
+        for ($i = 0; $i < strlen($string); $i++) {
+            $code .= substr($string, $i, 1) ^ substr($hash, ($i % strlen($hash)), 1);
         }
 
         return $code;
@@ -261,21 +261,21 @@ class Encrypt {
      *
      * @see http://www.ciphersbyritter.com/GLOSSARY.HTM#IV
      *
-     * @param string $str 待加密的字符串
+     * @param string $string 待加密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _noise($str, $key) {
+    protected function _noise($string, $key) {
 
-        $hash = $this->_config['hash']($key);
+        $hash    = $this->_config['hash']($key);
         $hashlen = strlen($hash);
-        $strlen = strlen($str);
-        $code = '';
+        $strlen  = strlen($string);
+        $code    = '';
 
         for ($i = 0, $j = 0; $i < $strlen; ++$i, ++$j) {
             if ($j >= $hashlen) $j = 0;
-            $code .= chr((ord($str[$i]) + ord($hash[$j])) % 256);
+            $code .= chr((ord($string[$i]) + ord($hash[$j])) % 256);
         }
 
         return $code;
@@ -286,21 +286,21 @@ class Encrypt {
      *
      * @access protected
      *
-     * @param string $str 待解密的字符串
+     * @param string $string 待解密的字符串
      * @param string $key 附加码
      *
      * @return string
      */
-    protected function _denoise($str, $key) {
+    protected function _denoise($string, $key) {
 
-        $hash = $this->_config['hash']($key);
+        $hash    = $this->_config['hash']($key);
         $hashlen = strlen($hash);
-        $strlen = strlen($str);
-        $code = '';
+        $strlen  = strlen($string);
+        $code    = '';
 
         for ($i = 0, $j = 0; $i < $strlen; ++$i, ++$j) {
             if ($j >= $hashlen) $j = 0;
-            $temp = ord($str[$i]) - ord($hash[$j]);
+            $temp = ord($string[$i]) - ord($hash[$j]);
             if ($temp < 0) $temp = $temp + 256;
             $code .= chr($temp);
         }
