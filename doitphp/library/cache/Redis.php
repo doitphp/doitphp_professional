@@ -36,17 +36,13 @@ class Cache_Redis {
      *
      * @var array
      */
-    protected $_defaultServer = array(
-        'host' => '127.0.0.1',
-        'port' => '6379',
+    protected $_defaultOptions = array(
+        'host'       => '127.0.0.1',
+        'port'       => '6379',
+        'database'   => 0,
+        'persistent' => false,
+        'expire'     => 900,
     );
-
-    /**
-     * 默认的缓存策略
-     *
-     * @var array
-     */
-    protected $_defaultOptions = array('expire' => 900);
 
     /**
      * 构造函数
@@ -71,13 +67,24 @@ class Cache_Redis {
             }
         }
 
-        $options += $this->_defaultServer;
-
+        $options += $this->_defaultOptions;
         //连接数据库
         $this->_Redis  = new Redis();
-        $this->_Redis->connect($options['host'], $options['port']);
+        if (!$options['persistent']) {
+            $return = $this->_Redis->connect($options['host'], $options['port'], $options['expire']);;
+        } else {
+            $persistentId = $options['port'] . $options['expire'] . $options['database'];
+            $return = $this->_Redis->pconnect($options['host'], $options['port'], $options['expire'], $persistentId);
+        }
 
-        return true;
+        if ($return && $options['password']) {
+            $return = $this->_Redis->auth($options['password']);
+        }
+        if ($return) {
+            $return = $this->_Redis->select($options['database']);
+        }
+
+        return $return;
     }
 
     /**
@@ -101,7 +108,6 @@ class Cache_Redis {
         $value  = json_encode($value);
         $result = $this->_Redis->set($key, $value);
 
-        $expire = is_null($expire) ? $this->_defaultOptions['expire'] : $expire;
         if ($expire > 0) {
             $this->_Redis->setTimeout($key, $expire);
         }
@@ -240,6 +246,36 @@ class Cache_Redis {
         }
 
         return $this->_Redis->decrBy($key, $value);
+    }
+
+    /**
+     * 删除指定的缓存
+     *
+     * @access public
+     *
+     * @param string $key 所要删除数据的Key
+     *
+     * @return boolean
+     */
+    public function delete($key) {
+
+    	//参数分析
+    	if (!$key) {
+    		return false;
+    	}
+
+    	return $this->_Redis->delete($key);
+    }
+
+    /**
+     * 清除所有的缓存数据
+     *
+     * @access public
+     * @return boolean
+     */
+    public function clear() {
+
+    	return $this->_Redis->flushAll();
     }
 
     /**
