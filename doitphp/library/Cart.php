@@ -67,12 +67,12 @@ class Cart {
      */
     protected function _getCookie($cartName) {
 
-        $data = Cookie::get($this->_cartName);
+        $data = Doit::singleton('Cookie')->get($this->_cartName);
         if (!$data) {
             return array();
         }
 
-        return unserialize($data);
+        return $data;
     }
 
     /**
@@ -89,11 +89,7 @@ class Cart {
      */
     protected function _setCookie($key, $value = null, $expire = null, $path = null) {
 
-        if (!is_null($value)) {
-            $value = serialize($value);
-        }
-
-        return Cookie::set($key, $value, $expire, $path);
+        return Doit::singleton('Cookie')->set($key, $value, $expire, $path);
     }
 
     /**
@@ -265,7 +261,7 @@ class Cart {
      */
     public function clear() {
 
-        return Cookie::delete($this->_cartName);
+        return Doit::singleton('Cookie')->delete($this->_cartName);
     }
 
     /**

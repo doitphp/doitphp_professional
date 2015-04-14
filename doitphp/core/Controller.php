@@ -142,9 +142,9 @@ abstract class Controller {
      *
      * @return mixed
      */
-    public static function getCookie($cookieName = null, $default = null) {
+    public function getCookie($cookieName = null, $default = null) {
 
-        return Cookie::get($cookieName, $default);
+        return $this->cookie->get($cookieName, $default);
     }
 
     /**
@@ -160,9 +160,9 @@ abstract class Controller {
      *
      * @return boolean
      */
-    public static function setCookie($cookieName, $value, $expire = null, $path = null, $domain = null) {
+    public function setCookie($cookieName, $value, $expire = null, $path = null, $domain = null) {
 
-        return Cookie::set($cookieName, $value, $expire, $path, $domain);
+        return $this->cookie->set($cookieName, $value, $expire, $path, $domain);
     }
 
     /**
