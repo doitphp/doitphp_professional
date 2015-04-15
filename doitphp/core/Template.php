@@ -239,7 +239,7 @@ class Template {
             $viewContent = ob_get_clean();
         } else {
             //加载layout文件
-            $layoutCompileFile = $this->_getCompileFile('layout/' . $this->layout);
+            $layoutCompileFile = $this->_getCompileFile('layout/' . $this->_layout);
             if ($this->_isCompile($layoutFile, $layoutCompileFile)) {
                 //重新生成layout视图编译文件
                 $layoutContent = $this->_loadViewFile($layoutFile);

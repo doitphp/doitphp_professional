@@ -20,6 +20,20 @@ if (!defined('IN_DOIT')) {
 class WidgetTemplate extends Template {
 
     /**
+     * 单例模式实现化对象
+     *
+     * @var object
+     */
+    protected static $_instance = null;
+
+    /**
+     * 视图变量数组
+     *
+     * @var array
+     */
+    protected $_options = array();
+
+    /**
      * widget的名称,默认为null
      *
      * @var string
