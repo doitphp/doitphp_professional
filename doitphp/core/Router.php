@@ -266,7 +266,7 @@ abstract class Router {
         //当前的网址格式为:路由网址模式时
         if (URL_FORMAT == Configure::PATH_FORMAT) {
 
-            $url .= ((DOIT_REWRITE === false) ? ENTRY_SCRIPT_NAME . URL_SEGEMENTATION : '') . $route;
+            $url .= ((DOIT_REWRITE === false) ? ENTRY_SCRIPT_NAME . '/' : '') . $route;
 
             if ($params && is_array($params)) {
                 $paramArray = array();
