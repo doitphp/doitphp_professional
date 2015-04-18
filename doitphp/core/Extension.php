@@ -130,7 +130,7 @@ abstract class Extension extends Controller {
      */
     protected static function _getExtRoot($extensionName) {
 
-        return BASE_PATH . '/extensions/' . strtolower($extensionName);
+        return BASE_PATH . '/extensions/' . $extensionName;
     }
 
     /**
@@ -152,7 +152,7 @@ abstract class Extension extends Controller {
      */
     public function getExtName() {
 
-        return substr(strtolower(get_class($this)), 0, -3);
+        return substr(get_class($this), 0, -3);
     }
 
     /**

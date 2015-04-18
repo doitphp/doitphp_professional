@@ -305,7 +305,7 @@ abstract class Widget extends Controller {
      */
     protected function _getWidgetName() {
 
-        return substr(strtolower(get_class($this)), 0, -6);
+        return substr(get_class($this), 0, -6);
     }
 
     /**
