@@ -463,7 +463,8 @@ class Template {
         }
 
         //分析判断,循环标签
-        $tagSel = array_shift(explode(' ', $tag));
+		$tagSel = explode(' ', $tag);
+        $tagSel = array_shift($tagSel);
         switch ($tagSel) {
 
             case 'if' :
