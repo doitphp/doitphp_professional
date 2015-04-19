@@ -65,7 +65,7 @@ class WidgetTemplate extends Template {
         $this->_viewPath = $widgetPath . '/views';
 
         //设置视图编译缓存文件的默认目录路径
-        $this->_compilePath = CACHE_PATH . '/views' . '/widgets';
+        $this->_compilePath = CACHE_PATH . '/views/widgets';
 
         return true;
     }

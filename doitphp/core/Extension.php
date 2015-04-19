@@ -120,7 +120,7 @@ abstract class Extension extends Controller {
     }
 
     /**
-     * 获取当前扩展module目录的路径
+     * 获取当前扩展目录的路径
      *
      * @access protected
      *
@@ -134,7 +134,7 @@ abstract class Extension extends Controller {
     }
 
     /**
-     * 获取当前扩展module目录的路径
+     * 获取当前扩展目录的路径
      *
      * @access public
      * @return string
