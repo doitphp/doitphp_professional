@@ -435,7 +435,7 @@ abstract class Controller {
     /**
      * 静态加载文件
      *
-     * 相当于inclue_once()。注：如果在模块的Controller文件中调用本模块的文件，可使用#_SELF_PATH代表本模块的根目录路径。
+     * 相当于inclue_once()
      *
      * @example
      * 例一：
