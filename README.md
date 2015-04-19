@@ -1,8 +1,6 @@
 #DoitPHP 专业版 V2.3
 
-DoitPHP专业版与标准版的区别在于：专业版支持Modules，而标准版不支持，Modules对于企业级的大项目在代码管理方面优势明显。
-
-关于DoitPHP
+注：DoitPHP专业版与标准版的区别在于：专业版支持Modules，而标准版不支持，Modules对于企业级的大项目在代码管理方面优势明显。
 
 DoitPHP(原Tommyframework)是一个基于BSD开源协议发布的轻量级PHP框架。简而言之：DoitPHP运行高效，易学易用，易于扩展。换而言之：DoitPHP运行高效而不失功能强大，操作灵活而又能扩展自如。作为PHP框架里的“后起之秀”，DoitPHP秉承了那些优秀的PHP框架所共有的：代码的OOP编写风格、URL的路由功能、MVC的架构思想、UID的数据库操作、以及AJAX的前端页面技术支持。并在操作和功能设计上进行了微创新：
 
