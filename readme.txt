@@ -18,7 +18,7 @@ DoitPHP V2.3
     LICENSE               doitphp的许可证
     README                说明文件
 
-2.如果想更快速的开发项目代码，请另行下载doitphp tools v2.2来辅助开发。
+2.如果想更快速的开发项目代码，请另行下载doitphp tools v2.3来辅助开发。
 
 要求
 ------------
