@@ -27,6 +27,13 @@ class Cart {
     protected $_cartName = 'myShoppingCart';
 
     /**
+     * 扩展类cookie实例化对象
+     *
+     * @var object
+     */
+    protected $_cookieObj = null;
+
+    /**
      * 购物车cookie存放路径
      *
      * @var string
@@ -42,6 +49,17 @@ class Cart {
     protected $_lifeTime = 2592000;
 
     /**
+     * 构造函数
+     *
+     * @access public
+     * @return boolean
+     */
+    public function __construct() {
+        $this->_cookieObj = Doit::singleton('Cookie');
+        return true;
+    }
+
+    /**
      * 显示购物车内容
      *
      * @access public
@@ -53,43 +71,12 @@ class Cart {
     public function readCart() {
 
         //从购物车cookie中读取数据
-        return $this->_getCookie($this->_cartName);
-    }
-
-    /**
-     * 读取购物车的cookie数据
-     *
-     * @access protected
-     *
-     * @param stirng $cartName 购物车的cookie名称
-     *
-     * @return mixed
-     */
-    protected function _getCookie($cartName) {
-
-        $data = Doit::singleton('Cookie')->get($this->_cartName);
+        $data = $this->_cookieObj->get($this->_cartName);
         if (!$data) {
             return array();
         }
 
         return $data;
-    }
-
-    /**
-     * 设置购物车cookie数据
-     *
-     * @access protected
-     *
-     * @param stirng $key Cookie的名称
-     * @param mixed $value Cookie的值
-     * @param interger $expire Cookie的生存周期
-     * @param string $path Cookie的存贮路径
-     *
-     * @return mixed
-     */
-    protected function _setCookie($key, $value = null, $expire = null, $path = null) {
-
-        return Doit::singleton('Cookie')->set($key, $value, $expire, $path);
     }
 
     /**
@@ -127,7 +114,7 @@ class Cart {
             }
         }
 
-        $this->_setCookie($this->_cartName, $data, $this->_lifeTime, $this->_cookiePath);
+        $this->_cookieObj->set($this->_cartName, $data, $this->_lifeTime, $this->_cookiePath);
 
         return true;
     }
@@ -173,7 +160,7 @@ class Cart {
             }
         }
 
-        $this->_setCookie($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
+        $this->_cookieObj->set($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
 
         return true;
     }
@@ -216,7 +203,7 @@ class Cart {
 
         $cartData[$data[0]] = array($data[0], $data[1], $data[2], $data[3], $data[4]);
 
-        $this->_setCookie($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
+        $this->_cookieObj->set($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
 
         return true;
     }
@@ -247,7 +234,7 @@ class Cart {
 
         if (isset($cartData[$key])) {
             unset($cartData[$key]);
-            $this->_setCookie($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
+            $this->_cookieObj->set($this->_cartName, $cartData, $this->_lifeTime, $this->_cookiePath);
         }
 
         return true;
@@ -261,7 +248,7 @@ class Cart {
      */
     public function clear() {
 
-        return Doit::singleton('Cookie')->delete($this->_cartName);
+        return $this->_cookieObj->delete($this->_cartName);
     }
 
     /**
