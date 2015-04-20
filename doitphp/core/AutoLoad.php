@@ -42,7 +42,7 @@ abstract class AutoLoad {
     'Captcha'           => 'library/Captcha.php',
     'Curl'              => 'library/Curl.php',
     'Client'            => 'library/Client.php',
-    'Validation'             => 'library/Validation.php',
+    'Validation'        => 'library/Validation.php',
     'Xml'               => 'library/Xml.php',
     'FileDownload'      => 'library/FileDownload.php',
     'FileUpload'        => 'library/FileUpload.php',
