@@ -330,7 +330,7 @@ abstract class AutoLoad {
         if (strpos($className, '_') !== false) {
             $childDirArray = explode('_', $className);
             $classFileName = array_pop($childDirArray);
-            return $homePath . DS . strtolower(implode(DS, $childDirArray)) . DS . $classFileName . '.php';
+            return $homePath . DS . implode(DS, $childDirArray) . DS . $classFileName . '.php';
         }
 
         return $homePath . DS . $className . '.php';
