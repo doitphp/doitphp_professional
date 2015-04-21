@@ -5,7 +5,7 @@
  * 适用于网购系统购物车的数据管理
  *
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2010 Tommy Software Studio
+ * @copyright Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Cart.php 2.0 2012-12-23 00:20:01Z tommy $

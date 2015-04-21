@@ -5,7 +5,7 @@
  * 注:本类生成xml文件只限内容极为简单数据,如操作复杂数据请用php5.0自带的simpleXml函数组
  *
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2010 Tommy Software Studio
+ * @copyright Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Xml.php 2.0 2012-12-29 19:40:01Z tommy $

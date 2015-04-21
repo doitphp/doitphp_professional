@@ -4,12 +4,16 @@
  *
  * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
- * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
+ * @copyright Copyright (C) 2012 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Cache_File.php 2.0 2012-12-30 21:04:41Z tommy <tommy@doitphp.com> $
  * @package cache
  * @since 1.0
  */
+
+if (!defined('IN_DOIT')) {
+    exit();
+}
 
 class Cache_File {
 

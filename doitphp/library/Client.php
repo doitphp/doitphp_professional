@@ -4,7 +4,7 @@
  *
  * 获取客户端IP地址,操作系统,浏览器信息等
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2010 Tommy Software Studio
+ * @copyright Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Client.php 1.3 2011-11-11 20:50:01Z tommy $

@@ -5,7 +5,7 @@
  * 注:部分代码参考了Qeephp 2.1 memecached.php代码
  *
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2010 Tommy Software Studio
+ * @copyright Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Cache_Memcache.php 2.0 2012-12-30 18:00:01Z tommy $

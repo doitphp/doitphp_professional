@@ -3,7 +3,7 @@
  * Memcached 缓存操作类
  *
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2015 Tommy Software Studio
+ * @copyright Copyright (c) 2015 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Cache_Memcachedd.php 2.0 2015-04-01 15:00:01Z tommy $

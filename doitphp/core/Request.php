@@ -4,7 +4,7 @@
  *
  * @author tommy <tommy@doitphp.com>
  * @link http://www.doitphp.com
- * @copyright Copyright (C) Copyright (c) 2012 www.doitphp.com All rights reserved.
+ * @copyright Copyright (C) 2015 www.doitphp.com All rights reserved.
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Request.php 2.0 2012-11-28 23:25:26Z tommy <tommy@doitphp.com> $
  * @package core

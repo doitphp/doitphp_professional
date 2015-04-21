@@ -5,7 +5,7 @@
  * 注：支持的汉字编码为gbk,汉字也是常用的汉字,对于生僻的汉字可能无法支持
  *
  * @author tommy <tommy@doitphp.com>
- * @copyright  Copyright (c) 2010 Tommy Software Studio
+ * @copyright Copyright (c) 2010 Tommy Software Studio
  * @link http://www.doitphp.com
  * @license New BSD License.{@link http://www.opensource.org/licenses/bsd-license.php}
  * @version $Id: Pinyin.php 2.0 2012-12-22 21:06:01Z tommy $
