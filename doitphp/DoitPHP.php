@@ -151,7 +151,7 @@ abstract class Doit {
         static $_app = array();
 
         self::$_module     = $routerInfo['module'];
-        self::$_controller = ucfirst(trim($routerInfo['controller'], '_'));
+        self::$_controller = ucfirst($routerInfo['controller']);
         self::$_action     = strtolower($routerInfo['action']);
 
         $appId = (self::$_module) ? self::$_module . '-' . self::$_controller . '-' . self::$_action : self::$_controller . '-' . self::$_action;
