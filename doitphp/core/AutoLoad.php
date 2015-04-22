@@ -78,7 +78,7 @@ abstract class AutoLoad {
      *
      * 注:并非程序初始化时将所有的controller,model等文件都统统加载完,再执行其它。
      * 理解本函数前一定要先理解AutoLoad的作用。
-     * 当程序运行时发现所需的文件没有找到时,AutoLoad才会被激发,按照register()的程序设计来完成对该文件的加载
+     * 当程序运行时发现所需的文件没有找到时,AutoLoad才会被激发,按照loadClass()的程序设计来完成对该文件的加载
      *
      * @access public
      *
@@ -86,7 +86,7 @@ abstract class AutoLoad {
      *
      * @return void
      */
-    public static function register($className) {
+    public static function loadClass($className) {
 
         //参数分析
         if (!$className) {

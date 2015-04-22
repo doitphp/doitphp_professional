@@ -412,4 +412,4 @@ Doit::loadFile(DOIT_ROOT . '/core/AutoLoad.php');
 /**
  * 调用SPL扩展,注册__autoload()函数.
  */
-spl_autoload_register(array('AutoLoad', 'register'));
+spl_autoload_register(array('AutoLoad', 'loadClass'));
