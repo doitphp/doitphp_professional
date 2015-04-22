@@ -107,18 +107,18 @@ abstract class AutoLoad {
             //加载所要运行的widget文件
             self::_loadWidget($className);
         } else {
+            //加载所使用命名空间的类文件
+            if (strpos($className, '\\') !== false) {
+                $filePath = BASE_PATH . DS . str_replace('\\', DS, $className) . '.php';
+                if (!is_file($filePath)) {
+                    //当使用命名空间的文件不存在时，提示错误信息
+                    Controller::halt('The File: ' . $filePath .' is not found !', 'Normal');
+                }
+                Doit::loadFile($filePath);
+                return true;
+            }
             //分析加载扩展类文件目录(library)的文件
             if (!self::_loadLibrary($className)) {
-                //加载所使用命名空间的类文件
-                if (strpos($className, '\\') !== false) {
-                    $filePath = BASE_PATH . DS . str_replace('\\', DS, $className) . '.php';
-                    if (!is_file($filePath)) {
-                        //当使用命名空间的文件不存在时，提示错误信息
-                        Controller::halt('The File: ' . $filePath .' is not found !', 'Normal');
-                    }
-                    Doit::loadFile($filePath);
-                    return true;
-                }
                 //根据配置文件improt的引导设置，自动加载文件
                 if (!self::_loadImportConfigFile($className)) {
                     //最后，当运行上述自动加载规则，均没有加载所需要的文件时，提示错误信息
