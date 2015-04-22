@@ -177,7 +177,7 @@ abstract class Extension extends Controller {
         if (!isset(self::$_extensionObjArray[$extensionName])) {
 
             //加载扩展模块的引导文件(index)
-            $extensionPath = self::_getExtRoot($extensionName) . DS . $extensionName . '.php';
+            $extensionPath = self::_getExtRoot($extensionName) . DS . $extensionName . 'Ext.php';
             Doit::loadFile($extensionPath);
 
             self::$_extensionObjArray[$extensionName] = Doit::singleton($extensionName . 'Ext');
