@@ -151,12 +151,9 @@ abstract class AutoLoad {
             $controllerHomePath = BASE_PATH . '/modules/' . $moduleName . '/controllers';
         }
 
-        //分析controller名称
-        $controllerName = substr($className, 0, -10);
-
         //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
-        if (strpos($controllerName, '_') === false) {
-            $controllerFilePath = $controllerHomePath . DS . $controllerName . '.php';
+        if (strpos($className, '_') === false) {
+            $controllerFilePath = $controllerHomePath . DS . $className . '.php';
             if (!is_file($controllerFilePath)) {
                 //当Controller文件不存在时,系统直接报错
                 Controller::halt('The Controller File: ' . $controllerFilePath .' is not found!', 'Normal');
@@ -165,7 +162,7 @@ abstract class AutoLoad {
             Doit::loadFile($controllerFilePath);
         } else {
             //当$controller中含有'_'字符时,将'_'替换为路径分割符。如："/" 或 "\"
-            $childDirArray      = explode('_', strtolower($controllerName));
+            $childDirArray      = explode('_', strtolower($className));
             $controllerFileName = ucfirst(array_pop($childDirArray));
             $childDirName       = implode(DS, $childDirArray);
             unset($childDirArray);
@@ -202,7 +199,7 @@ abstract class AutoLoad {
         }
 
         //分析Model文件的实际路径
-        $modelFilePath = self::_parseFilePath($modelHomePath, substr($className, 0, -5));
+        $modelFilePath = self::_parseFilePath($modelHomePath, $className);
 
         //当Model文件存在时
         if (!is_file($modelFilePath)) {
@@ -237,7 +234,7 @@ abstract class AutoLoad {
         }
 
         //分析Widget文件的实际路径
-        $widgetFilePath = self::_parseFilePath($widgetHomePath, substr($className, 0, -6));
+        $widgetFilePath = self::_parseFilePath($widgetHomePath, $className);
         //当Widget文件在Widget根目录中存在时
         if (!is_file($widgetFilePath)) {
             //当所要加载的Widget文件不存在时,显示错误提示信息
