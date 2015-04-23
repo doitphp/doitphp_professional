@@ -166,10 +166,10 @@ abstract class Doit {
             //分析Controller子目录的情况。注:controller文件的命名中下划线'_'相当于目录的'/'。
             if (strpos($controller, '_') !== false) {
                 //当controller名中含有'_'字符时,将'_'替换为路径分割符。如："/" 或 "\"
-                $childDirArray = explode('_', strtolower($controller));
+                $childDirArray = explode('_', strtolower(self::$_controller));
                 $tagFileName   = ucfirst(array_pop($childDirArray));
                 $childDirName  = implode(DS, $childDirArray);
-                $tagFileName   = $childDirName . DS . $tagFileName;
+                $tagFileName   = $childDirName . DS . $tagFileName . 'Controller';
             } else {
                 $tagFileName   = $controller;
             }
