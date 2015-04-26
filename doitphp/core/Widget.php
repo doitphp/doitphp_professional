@@ -173,7 +173,7 @@ abstract class Widget extends Controller {
 
         //当视图格式为HTML时
         if (VIEW_EXT == Configure::VIEW_EXT_HTML) {
-        	return self::$_viewObject->assign($keys, $value);
+            return self::$_viewObject->assign($keys, $value);
         }
 
         if (!is_array($keys)) {
