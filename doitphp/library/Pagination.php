@@ -355,12 +355,14 @@ class Pagination {
         }
 
         //分析分页列表
-        foreach ($data['listpage'] as $lines) {
-            if ($lines['current'] === true) {
-                $html .= '<li class="pagelist_current">' . $lines['text'] . '</li>';
-            } else {
-                $content = ($data['ajax'] === true) ? "<a href='{$lines['url']}' onclick='{$data['ajaxaction']}('{$lines['url']}'); return false;'>{$lines['text']}</a>" : "<a href='{$lines['url']}' target='_self'>{$lines['text']}</a>";
-                $html .= '<li>' . $content . '</li>';
+        if (isset($data['listpage'])) {
+            foreach ($data['listpage'] as $lines) {
+                if ($lines['current'] === true) {
+                    $html .= '<li class="pagelist_current">' . $lines['text'] . '</li>';
+                } else {
+                    $content = ($data['ajax'] === true) ? "<a href='{$lines['url']}' onclick='{$data['ajaxaction']}('{$lines['url']}'); return false;'>{$lines['text']}</a>" : "<a href='{$lines['url']}' target='_self'>{$lines['text']}</a>";
+                    $html .= '<li>' . $content . '</li>';
+                }
             }
         }
 
