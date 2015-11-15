@@ -165,6 +165,9 @@ class DbPdo {
             return $this;
         }
 
+        //写入日志
+        $this->_logQuery($sql, $params);
+
         $this->_query = $result;
 
         return $this;
