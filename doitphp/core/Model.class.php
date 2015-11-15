@@ -492,7 +492,7 @@ class Model {
      */
     public function startTrans() {
 
-        return $this->_master->startTrans();
+        return $this->_master()->startTrans();
     }
 
     /**
@@ -503,7 +503,7 @@ class Model {
      */
     public function commit() {
 
-        return $this->_master->commit();
+        return $this->_master()->commit();
     }
 
     /**
@@ -514,7 +514,7 @@ class Model {
      */
     public function rollback() {
 
-        return $this->_master->rollback();
+        return $this->_master()->rollback();
     }
 
     /**
