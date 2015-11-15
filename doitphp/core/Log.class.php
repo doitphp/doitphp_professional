@@ -56,7 +56,7 @@ abstract class Log {
         $actionId     = Doit::getActionName();
 
         //分析日志内容
-        $message      = "[{$controllerId}][{$actionId}]:" . $message;
+        $message      = "[{$controllerId}][{$actionId}]:" . $message . PHP_EOL;
 
         return error_log(date('[Y-m-d H:i:s]') . " {$level}: {$message} IP: {$_SERVER['REMOTE_ADDR']}\n", 3, $logFilePath);
     }
